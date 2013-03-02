@@ -45,7 +45,7 @@ Skeleton.prototype.renderJoints = function (data) {
     this.context.closePath();
     this.context.fill();
 
-    return this;	
+    return this;
 }
 
 Skeleton.prototype.drawLimb = function (data, start, end) {
@@ -84,3 +84,39 @@ Skeleton.prototype.renderLimbs = function (data) {
 	    this.drawLimb(skeleton, "ankleright", "footright");
 	}
 };
+
+Skeleton.prototype.jointAngle = function(data, jointName) {
+  var surroundingJoints = {
+    'elbowleft'  : ['wristleft', 'shoulderleft'],
+    'elbowright' : ['wristright', 'shoulderright'],
+    'kneeleft'   : ['hipleft', 'ankleleft'],
+    'kneeright'  : ['hipleft', 'ankleright']
+  };
+
+  // make sure we care about this joint
+  if (!_.has(surroundingJoints, jointName + 'left')) {
+    throw "unsported joint '" + jointName + "' must be one of [" + _.keys(surroundingJoints).join(',') + "]";
+  }
+
+  var getAngle = function (p1, p2, p3) {
+    var v1 = { x : p1.x - p2.x, y : p1.y - p2.y, z : p1.z - p2.z };
+    var v2 = { x : p3.x - p2.x, y : p3.y - p2.y, z : p3.z - p2.z };
+    var mag1 = Math.sqrt(v1.x*v1.x + v1.y*v1.y + v1.z*v1.z);
+    var mag2 = Math.sqrt(v2.x*v2.x + v2.y*v2.y + v2.z*v2.z);
+    var dot = v1.x*v2.x + v1.y*v2.y + v1.z*v2.z;
+    return Math.acos(dot / mag1 / mag2) * 180 / 3.14159;
+  };
+
+  var angles = [];
+  _.each(data.skeletons, function(skeleton) {
+    var leftJoint = jointName + 'left';
+    var rightJoint = jointName + 'right';
+    var joint = skeleton.joints;
+
+    angles.push({
+      left  : getAngle(joint[surroundingJoints[leftJoint][0]], joint[leftJoint], joint[surroundingJoints[leftJoint][1]]),
+      right : getAngle(joint[surroundingJoints[rightJoint][0]], joint[rightJoint], joint[surroundingJoints[rightJoint][1]])
+    });
+  });
+  return angles;
+}

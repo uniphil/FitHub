@@ -35,6 +35,10 @@
         // Render the skeleton(s)
         skeleton.render(jsonObject);
 
+        // Output the angles
+        var angles = skeleton.jointAngle(jsonObject, 'knee')[0];
+        console.log('left : ' + angles.left + " | right : " + angles.right);
+
         // Inform the server about the update.
         socket.send("Skeleton updated on: " + (new Date()).toDateString() + ", " + (new Date()).toTimeString());
     };
