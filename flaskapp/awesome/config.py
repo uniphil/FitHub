@@ -3,9 +3,7 @@
     awesome.config
     ~~~~~~~~~~~~~~
 
-    Sensible development defaults are defined here, overridden by environment
-    variables, if they exist. Heroku likes environmet variables for
-    configuration, so this is convenient.
+    blah
 
     :copyright: (c) 2013 by people
     :license: Reserved, see the license file for more details.
@@ -13,8 +11,18 @@
 
 
 import os
-import logging
 from awesome import app
+
+
+config = dict(
+    SECRET_KEY='so secure',
+    HOST='127.0.0.1',
+    PORT=5000,
+)
+
+
+app.config.from_object('{name}.config'.format(name=__name__))
+app.config.from_envvar('FITHUB_CONFIG')
 
 
 if str(os.environ.get('DEBUG')).lower() in ['true', 'on', 'yes', 'debug']:
@@ -22,10 +30,3 @@ if str(os.environ.get('DEBUG')).lower() in ['true', 'on', 'yes', 'debug']:
     app.config['DEBUG'] = True
     
 
-app.config.update(
-    SECRET_KEY=os.environ.get('SECRET_KEY', 'so secure'),
-    HOST=os.environ.get('IP', '127.0.0.1'),
-    PORT=os.environ.get('PORT', 5000),
-    ORGANIZATION_NAME='Queen\'s Applied Sustainability',
-    MONGO_DBNAME='awesome'
-)
