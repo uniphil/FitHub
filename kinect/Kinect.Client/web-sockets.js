@@ -47,13 +47,31 @@
         context.closePath();
         context.fill();
 
+        for (var i = 0; i < jsonObject.skeletons.length; i++) {
+            draw(jsonObject.skeletons[i].joints);
+        }
+
         // Inform the server about the update.
         socket.send("Skeleton updated on: " + (new Date()).toDateString() + ", " + (new Date()).toTimeString());
     };
 
     var drawLimb = function (data, start, end) {
-        if (data[start] && data[end]) {
-            var from = data[start], to = data[end];
+        var from, to;
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].name === start) {
+                from = data[i];
+                break;
+            }
+        }
+
+        for (var j = 0; j < data.length; j++) {
+            if (data[j].name === end) {
+                to = data[j];
+                break;
+            }
+        }
+
+        if (from && to) {
             context.strokeStyle = '#fff'; // red
             context.lineWidth = 6;
             context.beginPath();
