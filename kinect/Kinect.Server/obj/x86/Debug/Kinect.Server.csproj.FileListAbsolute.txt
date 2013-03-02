@@ -1,0 +1,22 @@
+C:\Users\v-vapter\My Projects\Microsoft\ENGAGE\KinectHtml5\Kinect.Server\bin\Debug\Kinect.Server.exe
+C:\Users\v-vapter\My Projects\Microsoft\ENGAGE\KinectHtml5\Kinect.Server\bin\Debug\Kinect.Server.pdb
+C:\Users\v-vapter\My Projects\Microsoft\ENGAGE\KinectHtml5\Kinect.Server\bin\Debug\Fleck.dll
+C:\Users\v-vapter\My Projects\Microsoft\ENGAGE\KinectHtml5\Kinect.Server\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\v-vapter\My Projects\Microsoft\ENGAGE\KinectHtml5\Kinect.Server\obj\x86\Debug\Kinect.Server.exe
+C:\Users\v-vapter\My Projects\Microsoft\ENGAGE\KinectHtml5\Kinect.Server\obj\x86\Debug\Kinect.Server.pdb
+C:\Users\v-vapter\My Projects\KinectHtml5\Kinect.Server\obj\x86\Debug\Kinect.Server.exe
+C:\Users\v-vapter\My Projects\KinectHtml5\Kinect.Server\obj\x86\Debug\Kinect.Server.pdb
+C:\Users\v-vapter\My Projects\KinectHtml5\Kinect.Server\bin\Debug\Kinect.Server.exe
+C:\Users\v-vapter\My Projects\KinectHtml5\Kinect.Server\bin\Debug\Kinect.Server.pdb
+C:\Users\v-vapter\My Projects\KinectHtml5\Kinect.Server\bin\Debug\Fleck.dll
+C:\Users\v-vapter\My Projects\KinectHtml5\Kinect.Server\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Server\obj\x86\Debug\Kinect.Server.exe
+C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Server\obj\x86\Debug\Kinect.Server.pdb
+C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Server\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Server\bin\Debug\Kinect.Server.exe
+C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Server\bin\Debug\Kinect.Server.pdb
+C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Server\bin\Debug\Coding4Fun.Kinect.Wpf.dll
+C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Server\bin\Debug\Fleck.dll
+C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Server\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Server\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Server\bin\Debug\Kinect.Server.exe.config
