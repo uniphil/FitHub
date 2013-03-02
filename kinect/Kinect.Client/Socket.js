@@ -36,8 +36,9 @@
         skeleton.render(jsonObject);
 
         // Output the angles
-        var angles = skeleton.jointAngle(jsonObject, 'knee')[0];
-        console.log('left : ' + angles.left + " | right : " + angles.right);
+        var leftAngle = skeleton.jointAngle(jsonObject, 'handleft', 'shouldercenter', 'hipcenter')[0];
+        var rightAngle = skeleton.jointAngle(jsonObject, 'handright', 'shouldercenter', 'hipcenter')[0];
+        console.log('left : ' + leftAngle + " | right : " + rightAngle);
 
         // Inform the server about the update.
         socket.send("Skeleton updated on: " + (new Date()).toDateString() + ", " + (new Date()).toTimeString());

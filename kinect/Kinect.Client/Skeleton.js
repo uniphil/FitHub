@@ -85,19 +85,7 @@ Skeleton.prototype.renderLimbs = function (data) {
 	}
 };
 
-Skeleton.prototype.jointAngle = function(data, jointName) {
-  var surroundingJoints = {
-    'elbowleft'  : ['wristleft', 'shoulderleft'],
-    'elbowright' : ['wristright', 'shoulderright'],
-    'kneeleft'   : ['hipleft', 'ankleleft'],
-    'kneeright'  : ['hipleft', 'ankleright']
-  };
-
-  // make sure we care about this joint
-  if (!_.has(surroundingJoints, jointName + 'left')) {
-    throw "unsported joint '" + jointName + "' must be one of [" + _.keys(surroundingJoints).join(',') + "]";
-  }
-
+Skeleton.prototype.jointAngle = function(data, beforeJoint, middleJoint, afterJoint) {
   var getAngle = function (p1, p2, p3) {
     var v1 = { x : p1.x - p2.x, y : p1.y - p2.y, z : p1.z - p2.z };
     var v2 = { x : p3.x - p2.x, y : p3.y - p2.y, z : p3.z - p2.z };
@@ -109,14 +97,11 @@ Skeleton.prototype.jointAngle = function(data, jointName) {
 
   var angles = [];
   _.each(data.skeletons, function(skeleton) {
-    var leftJoint = jointName + 'left';
-    var rightJoint = jointName + 'right';
     var joint = skeleton.joints;
 
-    angles.push({
-      left  : getAngle(joint[surroundingJoints[leftJoint][0]], joint[leftJoint], joint[surroundingJoints[leftJoint][1]]),
-      right : getAngle(joint[surroundingJoints[rightJoint][0]], joint[rightJoint], joint[surroundingJoints[rightJoint][1]])
-    });
+    angles.push(
+      getAngle(joint[beforeJoint], joint[middleJoint], joint[afterJoint])
+    );
   });
   return angles;
 }
