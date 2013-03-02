@@ -14,15 +14,17 @@ import os
 from awesome import app
 
 
-config = dict(
+app.config.update(
     SECRET_KEY='so secure',
     HOST='127.0.0.1',
     PORT=5000,
 )
 
 
-app.config.from_object('{name}.config'.format(name=__name__))
-app.config.from_envvar('FITHUB_CONFIG')
+try:
+    app.config.from_envvar('FITHUB_CONFIG')
+except RuntimeError:
+    print "WHOA-- no config file loaded. using dev defaults"
 
 
 if str(os.environ.get('DEBUG')).lower() in ['true', 'on', 'yes', 'debug']:
