@@ -10,7 +10,8 @@
 """
 
 
-from flask import render_template, request, session, redirect, url_for, abort
+from flask import render_template, request, session, redirect, url_for, \
+                  make_response, abort
 from flask.ext.login import login_required, login_user, logout_user, \
                             current_user
 from awesome import app
@@ -63,6 +64,28 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('main'))
+
+
+@app.route('/messages/')
+def recieve_message():
+
+     if request.method == 'POST':
+         sender    = request.POST.get('sender')
+         recipient = request.POST.get('recipient')
+         subject   = request.POST.get('subject', '')
+
+         body_plain = request.POST.get('body-plain', '')
+         body_without_quotes = request.POST.get('stripped-text', '')
+         # note: other MIME headers are also posted here...
+
+         # attachments:
+         for key in request.FILES:
+             file = request.FILES[key]
+             # do something with the file
+
+     # Returned text is ignored but HTTP status code matters:
+     # Mailgun wants to see 2xx, otherwise it will make another attempt in 5 minutes
+     return HttpResponse('OK')
 
 
 @app.errorhandler(404)
