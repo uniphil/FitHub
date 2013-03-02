@@ -11,6 +11,7 @@
 
 
 import os
+import logging
 from awesome import app
 
 
@@ -24,7 +25,7 @@ app.config.update(
 try:
     app.config.from_envvar('FITHUB_CONFIG')
 except RuntimeError:
-    print "WHOA-- no config file loaded. using dev defaults"
+    logging.warning('WHOA-- no config file loaded. using dev defaults')
 
 
 if str(os.environ.get('DEBUG')).lower() in ['true', 'on', 'yes', 'debug']:
