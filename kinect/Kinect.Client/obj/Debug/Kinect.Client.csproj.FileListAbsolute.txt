@@ -13,3 +13,8 @@ C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Client\bin\Kinect.Client.pdb
 C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Client\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Client\obj\Debug\Kinect.Client.dll
 C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Client\obj\Debug\Kinect.Client.pdb
+C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Client\bin\Kinect.Client.dll
+C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Client\bin\Kinect.Client.pdb
+C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Client\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Client\obj\Debug\Kinect.Client.dll
+C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Client\obj\Debug\Kinect.Client.pdb
