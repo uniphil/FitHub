@@ -32,11 +32,12 @@ class User(Model, UserMixin):
     _collection_name = 'users'
 
     def __init__(self, **kwargs):
+        """this is a bit ugly, but not that bad. it works. and optional is."""
         if kwargs:
             # WEEEEOOOOOEEEEOOOOEEEEOO watch out
             self.username = kwargs['username']
             self.name = kwargs['username']
-            self.set_password(password)
+            self.set_password(kwargs['password'])
             self.new_user = True
 
     def set_password(self, password):
@@ -55,6 +56,19 @@ class User(Model, UserMixin):
 @login_manager.user_loader
 def load_user(username):
     """Retrieve a user by username. Returns None if the user cannot be found."""
-    #return User.find_one({'username': username})
-    return None
+    that_guy = User.find_one({'username': username})
+    return that_guy
+
+
+class Interested(Model):
+    """Signup to say we've got users"""
+
+    _collection_name = 'interested_yo'
+
+    def __init__(self, **kwargs):
+        if kwargs:
+            self.name = kwargs['name']
+            self.email = kwargs['email']
+            self.emailed = False
+
 

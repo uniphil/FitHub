@@ -10,10 +10,15 @@
 """
 
 
-from flask.ext.wtf import Form, TextField, PasswordField, Required, Length
+from flask.ext.wtf import Form, TextField, PasswordField, Required, Length, \
+                          Email
 
 
 class LoginForm(Form):
     username = TextField('username', validators=[Required()])
     password = PasswordField('password', validators=[Required(), Length(4)])
 
+
+class SignupForm(Form):
+    name = TextField('name')
+    email = TextField('email', validators=[Required(), Email()])

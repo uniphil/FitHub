@@ -105,8 +105,21 @@ class Model(AttrDict):
         Model.__init__(blah, mongodict) # init from here!
         return blah
 
+    def save(self):
+        """Create or update the instance in the database. Returns the
+        pymongo.ObjectId if it's new.
+        """
+        if '_id' in self:
+            # updating an old object
+            self.collection.update({'_id': self._id}, self)
+        else:
+            # inserting a new one!
+            _id = self.collection.insert(self)
+            self._id = _id
+            return _id
+
     @classmethod
-    def find_one(self, **q):
-        founddb = self.collection.find_one(**q)
+    def find_one(self, query={}):
+        founddb = self.collection.find_one(query)
         modeled = self.from_mongo(founddb)
         return modeled
