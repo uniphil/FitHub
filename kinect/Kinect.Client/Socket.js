@@ -30,11 +30,11 @@
         status.innerHTML = "Kinect data received.";
 
         // Get the data in JSON format.
-        var jsonObject = eval('(' + evt.data + ')');
+        var jsonObject = JSON.parse(evt.data);
 
         // Render the skeleton(s)
         skeleton.render(jsonObject);
-        
+
         // Inform the server about the update.
         socket.send("Skeleton updated on: " + (new Date()).toDateString() + ", " + (new Date()).toTimeString());
     };
