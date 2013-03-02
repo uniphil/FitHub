@@ -10,8 +10,7 @@ No authentication is used right now.
 URL root: `http://fithub.org/api/`
 
 
-Log Workout
-~~~~~~~~~~~
+### Log Workout
 
 ```
 POST /workout/new
