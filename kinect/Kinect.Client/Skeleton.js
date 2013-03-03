@@ -87,16 +87,21 @@ Skeleton.prototype.renderLimbs = function (data) {
 
 Skeleton.prototype.jointAngle = function(data, beforeJoint, middleJoint, afterJoint, prevAngle) {
   var getAngle = function (p1, p2, p3) {
-    var v1 = { x : p1.x - p2.x, y : p1.y - p2.y, z : p1.z - p2.z };
-    var v2 = { x : p3.x - p2.x, y : p3.y - p2.y, z : p3.z - p2.z };
-    var mag1 = Math.sqrt(v1.x*v1.x + v1.y*v1.y + v1.z*v1.z);
-    var mag2 = Math.sqrt(v2.x*v2.x + v2.y*v2.y + v2.z*v2.z);
-    var dot = v1.x*v2.x + v1.y*v2.y + v1.z*v2.z;
-    var angle = Math.acos(Math.min(dot / mag1 / mag2, 1)) * 180 / 3.14159;
+    var v1 = { x : p1.x - p2.x, y : p1.y - p2.y, z : 0 };
+    var v2 = { x : p3.x - p2.x, y : p3.y - p2.y, z : 0 };
+    var angle1 = Math.atan2(v1.y, v1.x);
+    var angle2 = Math.atan2(v2.y, v2.x);
+    var angle = (angle2 - angle1) * 180 / 3.14159;
+    if (angle < 0) {
+      return angle + 360;
+    } else if (angle > 360) {
+      return angle - 360;
+    }
     return angle;
   };
 
   var isCounterClockwise = function(v1, v2) {
+    return cross > 0;
   };
 
   var joint = data.skeletons[0].joints;

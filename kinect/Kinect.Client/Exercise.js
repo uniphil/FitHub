@@ -4,6 +4,7 @@ var average = function(arr) {
 
 var WINDOW_SIZE = 15;
 var SYMETRICAL_THRESHOLD = 50;
+var TOO_FAR_THRESHOLD = 240;
 var UP_THRESHOLD = 130;
 
 var Exercise = function (skeleton) {
@@ -17,7 +18,7 @@ var Exercise = function (skeleton) {
 };
 
 Exercise.prototype.updateAngle = function (data) {
-  var leftAngle = this.skeleton.jointAngle(data, "handleft", "shouldercenter", "hipcenter", _.last(this.leftAngleWindow));
+  var leftAngle = this.skeleton.jointAngle(data, "hipcenter", "shouldercenter", "handleft", _.last(this.leftAngleWindow));
   var rightAngle = this.skeleton.jointAngle(data, "handright", "shouldercenter", "hipcenter", _.last(this.rightAngleWindow));
   if (isNaN(leftAngle) || isNaN(rightAngle)) {
     return;
@@ -93,6 +94,17 @@ Exercise.prototype.hasFinishedRep = function () {
   return false;
 };
 
+Exercise.prototype.checkIsTooFar = function() {
+  var current = this.getCurrentAngle();
+  if (current.left >= TOO_FAR_THRESHOLD) {
+    this.addError("Left arm went too far");
+  }
+  if (current.right >= TOO_FAR_THRESHOLD) {
+    this.addError("Right arm went too far");
+  }
+  return (current.left >= TOO_FAR_THRESHOLD || current.right >= TOO_FAR_THRESHOLD);
+}
+
 Exercise.prototype.getRange = function() {
   if (this.getCurrentAngle().left > 45 && this.getCurrentAngle().left < 150) {
     return "middle";
@@ -130,6 +142,8 @@ Exercise.prototype.updateRepetitions = function (jsonObject) {
   if (!this.isSymetrical()) {
     this.addError("Arms were not symetrical");
   }
+
+  this.checkIsTooFar();
 
 	if (this.hasFinishedRep() && this.repErrors.length != 0) {
 		$("#repetitions").text(++this.repetitions);
