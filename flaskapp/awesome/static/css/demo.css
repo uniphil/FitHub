@@ -382,6 +382,8 @@ header .logo {
   display: block;
   float: left;
   background: transparent url('../img/logo.png') left top no-repeat;
+  position: relative;
+  z-index: 150;
   /*		padding-right: 1rem * @grb * @grb;
 		height: @headerheight;
 		width: @logoheight * @logoratio;
@@ -784,6 +786,8 @@ header .logo {
   display: block;
   float: left;
   background: transparent url('../img/logo.png') left top no-repeat;
+  position: relative;
+  z-index: 150;
   /*		padding-right: 1rem * @grb * @grb;
 		height: @headerheight;
 		width: @logoheight * @logoratio;
