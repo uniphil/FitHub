@@ -16,8 +16,16 @@
             </form>
 
         </div>
-        
-        <video id="vidibigi" src="{{ url_for('static', filename='video/bgvid.mp4') }}" autoplay ></video>
+
+        <video width="320" height="240" controls>
+            <source src="{{ url_for('video', filename='bgvid.mp4') }}"  type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
+            <source src="{{ url_for('video', filename='bgvid.webm') }}" type="video/webm; codecs=vp8" />
+            <source src="{{ url_for('video', filename='bgvid.ogg') }}"  type="video/ogg; codecs=theora,vorbis" />
+        </video>
+
+        <!-- <video id="vidibigi" src="{{ url_for('static', filename='video/bgvid.mp4') }}" autoplay="autoplay" >
+            <img src="{{ url_for('static', filename='img/bgvidframe.jpg') }}" />
+        </video> -->
     </div>
 
 {% endblock %}
