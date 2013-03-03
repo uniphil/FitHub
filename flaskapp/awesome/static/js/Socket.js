@@ -14,8 +14,8 @@
     status.innerHTML = "Connecting to server...";
 
     // Initialize a new web socket.
-    var port = $('meta[name=port]').attr('value');
-    var socket = new WebSocket("ws://localhost:" + port + "/KinectHtml5");
+    var hostport = $('meta[name=hostport]').attr('value');
+    var socket = new WebSocket("ws://" + hostport + "/KinectHtml5");
 
     // Connection established.
     socket.onopen = function () {
