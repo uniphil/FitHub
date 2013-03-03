@@ -115,15 +115,3 @@ def recieve_message():
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
-
-
-@app.route('/static/video/<filename>')
-def video(filename):
-    resp = make_response(open('static/video/{}'.format(filename), 'rb').read())
-    content_type = {
-        'ogg': 'video/ogg',
-        'mp4': 'video/mp4',
-        'webm': 'video/webm',
-    }[filename.split('.')[-1]]
-    resp.headers['Content-Type'] = content_type
-    return resp
