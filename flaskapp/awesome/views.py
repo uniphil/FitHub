@@ -111,7 +111,6 @@ def recieve_message():
 
 @app.route('/demo')
 def demo():
-  import ipdb; ipdb.set_trace()
   return render_template('demo.html', live=request.args.get('live', 'false') == 'true')
 
 @app.errorhandler(404)
