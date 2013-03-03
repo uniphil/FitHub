@@ -10,36 +10,96 @@
 """
 
 
-from flask import render_template, request, redirect, url_for, abort
+from flask import render_template, request, session, redirect, url_for, \
+                  make_response, abort
 from flask.ext.login import login_required, login_user, logout_user, \
                             current_user
+import requests
 from awesome import app
-from awesome.forms import LoginForm
-from awesome.users import User, load_user
+from awesome.forms import LoginForm, SignupForm
+from awesome.users import User, load_user, Interested
+from awesome.models import Message, Exercise, ExerciseType, MailSendLog
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def main():
-    return render_template('main.html')
+    form = SignupForm(request.form)
+    signed_up = session.get('signed_up', False)
+
+    if request.method == 'POST' and form.validate():
+        thou = Interested(name=form.email.name, email=form.email.data)
+        thou.save()
+        message = render_template('post-signup.html', you=thou)
+        data = {
+            'to': thou.email,
+            'from': 'hello@fithub.mailgun.org',
+            'subject': 'Thanks! --FitHub',
+            'html': message,
+        }
+        auth = ('api', app.config['MAILGUN_API_KEY'])
+        send_url = '/'.join([app.config['MAILGUN_API_URL'], 'messages'])
+        r = requests.post(send_url, auth=auth, data=data)
+
+        log = MailSendLog()
+        log.code = r.status_code
+        log.text = r.text
+        log.save()
+
+        form = SignupForm() # reset
+        session['signed_up'] = True
+
+    return render_template('main.html', form=form)
 
 
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     form = LoginForm(request.form)
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    return redirect(url_for('main'))
 
-#     if request.method == 'POST' and form.validate():
-#         user = User.find_one({'username': form.username.data})
-#         if user and user.check_password(form.password.data):
-#             login_user(user)
-#             return redirect(url_for('main'))
-
-#     return render_template('users/login.html', form=form)
+    # DO THIS IF TIME (because it's fun to fill out forms when exploring)
+    form = RegistrationForm(request.form)
+    if request.method == 'POST' and form.validate():
+        pass
 
 
-# @app.route('/logout')
-# def logout():
-#     logout_user()
-#     return redirect(url_for('main'))
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm(request.form)
+
+    if request.method == 'POST' and form.validate():
+        user = User.find_one({'username': form.username.data})
+        if user and user.check_password(form.password.data):
+            login_user(user)
+            return redirect(url_for('main'))
+
+    return render_template('login.html', form=form)
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('main'))
+
+
+@app.route('/clearsession')
+def clear_session():
+    session.clear()
+    return redirect(url_for('main'))
+
+
+@app.route('/messages/', methods=['POST'])
+def recieve_message():
+
+     if request.method == 'POST':
+        
+        message = Message(
+            sender=request.form.get('recipient'),
+            subject=request.form.get('subject', ''),
+            body_plain=request.form.get('body-plain', ''),
+        )
+
+        message.save()
+
+     return make_response('cool cool', 200)
 
 
 @app.errorhandler(404)

@@ -1,5 +1,57 @@
 {% extends 'ui.html' %}
 
 {% block content %}
-    <p>this. is. main.</p>
+
+    <h1>FitHub</h1>
+
+    <div id="signupblock">
+        {% if session.signed_up %}
+            <div class="yourock">   
+                you rock.
+            </div>
+        {% endif %}
+
+        <div id="signup" class="sign{% if session.signed_up %}ed{% endif %}">
+
+            <style>
+                {# todo: GET THIS OUTA HERE! #}
+                .signed {
+                    display: none;
+                }
+            </style>
+
+            <h3>sign up!</h3>
+
+            <form method="POST" action="{{ url_for('main') }}">
+                {{ form.csrf_token }}
+                <div class="form-input">
+                    {% if form.name.errors %}
+                        <ul class="login-errors">
+                            {% for error in form.name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {{ form.name(autofocus=true) }}
+                    {{ form.name.label }}
+                </div>
+                <div class="form-input">
+                    {% if form.email.errors %}
+                        <ul class="login-errors">
+                            {% for error in form.email.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {{ form.email(required=true, autofocus=true) }}
+                    {{ form.email.label }}
+                </div>
+                <button type="submit">I'm in &raquo;</button>
+            </form>
+
+        </div>
+    </div>
+
 {% endblock %}
+
+
