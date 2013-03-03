@@ -74,7 +74,7 @@ def exercise(slug):
 
 @app.route('/stats')
 def stats():
-    return 'stats yo'
+    return redirect(url_for('main'))
 
 
 @app.route('/register', methods=['GET', 'POST'])
