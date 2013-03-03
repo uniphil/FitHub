@@ -53,7 +53,8 @@ def main():
 
 @app.route('/training')
 def training():
-    return render_template('training.html')
+    exercises = ExerciseType.find()
+    return render_template('training.html', exercises=exercises)
 
 
 @app.route('/stats')

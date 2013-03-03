@@ -35,7 +35,7 @@
                 {% for exercise in exercises %}
                     <li class="{{ exercise.tags|join(' ') }}">
                         <div class="status {{ exercise.status }}"></div>
-                        <img src="{{ url_for('static', exercise.diagram) }}" alt="This is nothing" />
+                        <img src="{{ url_for('static', filename=exercise.diagram) }}" alt="This is nothing" />
                         <div class="textinfo">
                             <h2>{{ exercise.name }}</h2>
                             <h3>Status: {{ exercise.status }}</h3>

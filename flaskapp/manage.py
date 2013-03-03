@@ -29,9 +29,9 @@ manager = Manager(app)
 @manager.command
 def mongoinit():
     """set up indices on mongo"""
-    from flask.ext.pymongo import pymongo
-    from awesome.db import mongo
-    from awesome.users import User
+    # from flask.ext.pymongo import pymongo
+    # from awesome.db import mongo
+    # from awesome.users import User
     # collection_indices = {
     #     'user': {
     #         'args': ('username',),

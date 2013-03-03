@@ -71,7 +71,7 @@ class AttrDict(dict):
 
 class GetClassProperty(property):
     """Make a property-like thing that works on classes and instances.
-    
+
     It's nice to have access to the collection as a property. It's nice not to
     have to instantiate the model just to get that property.
 
@@ -88,7 +88,7 @@ class Model(AttrDict):
     @classmethod
     def _collection_name(cls):
         """You can just define this straight-up as a normal attribute
-        
+
         >>> class MyModel(KaleModel):
         ...     _collection_name = 'anycollection'
         """
@@ -102,7 +102,7 @@ class Model(AttrDict):
     @classmethod
     def from_mongo(cls, mongodict):
         blah = cls()
-        Model.__init__(blah, mongodict) # init from here!
+        Model.__init__(blah, mongodict)  # init from here!
         return blah
 
     def save(self):
@@ -123,3 +123,15 @@ class Model(AttrDict):
         founddb = self.collection.find_one(query)
         modeled = self.from_mongo(founddb)
         return modeled
+
+    @classmethod
+    def find(self, query={}):
+        cursor = self.collection.find(query)
+
+        def inflator(cursor):
+            while True:
+                found = cursor.next()
+                modeled = self.from_mongo(found)
+                yield modeled
+
+        return inflator(cursor)
