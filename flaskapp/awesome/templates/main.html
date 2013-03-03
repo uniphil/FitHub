@@ -18,11 +18,19 @@
 
             </div>
 
-            <video id="vidibigi" width="100%" height="100%" autoplay="autoplay" loop="loop">
-               <source src="{{ url_for('static', filename='video/bgvid.mp4') }}"  type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
-               <source src="{{ url_for('static', filename='video/fithub.webm') }}" type="video/webm; codecs=vp8" />
-               <source src="{{ url_for('static', filename='video/fithub.ogg') }}"  type="video/ogg; codecs=theora,vorbis" />
-            </video>
+            {% if first_video %}
+                <video id="vidibigi" width="100%" height="100%" autoplay="autoplay" loop="loop">
+                   <source src="{{ url_for('static', filename='video/bgvid.mp4') }}"  type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
+                   <source src="{{ url_for('static', filename='video/fithub.webm') }}" type="video/webm; codecs=vp8" />
+                   <source src="{{ url_for('static', filename='video/fithub.ogg') }}"  type="video/ogg; codecs=theora,vorbis" />
+                </video>
+            {% else %}
+                <video id="vidibigi" width="100%" height="100%" autoplay="autoplay" loop="loop">
+                   <source src="{{ url_for('static', filename='video/run.webm') }}" type="video/webm; codecs=vp8" />
+                   <source src="{{ url_for('static', filename='video/run.mp4') }}"  type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
+                   <source src="{{ url_for('static', filename='video/run.ogv') }}"  type="video/ogg; codecs=theora" />
+                </video>
+            {% endif %}
         </div>
     </div>
 

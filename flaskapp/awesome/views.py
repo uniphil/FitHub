@@ -9,7 +9,7 @@
     :license: Reserved, see the license file for more details.
 """
 
-
+import random
 from flask import render_template, request, session, redirect, url_for, \
     make_response
 from flask.ext.login import login_user, logout_user
@@ -46,7 +46,8 @@ def main():
         form = SignupForm()  # reset
         session['signed_up'] = True
 
-    return render_template('main.html', form=form)
+    first_video = random.choice([True, False])
+    return render_template('main.html', form=form, first_video=first_video)
 
 
 @app.route('/training')
