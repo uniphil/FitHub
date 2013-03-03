@@ -28,5 +28,7 @@ app.config.from_envvar('FITHUB_CONFIG')
 if str(os.environ.get('DEBUG')).lower() in ['true', 'on', 'yes', 'debug']:
     logging.warning('Debug turned on from envrionment variable!')
     app.config['DEBUG'] = True
-    
+else:
+    from werkzeug.contrib.fixers import ProxyFix
+    app.wsgi_app = ProxyFix(app.wsgi_app)    
 
