@@ -95,13 +95,7 @@ Skeleton.prototype.jointAngle = function(data, beforeJoint, middleJoint, afterJo
     return Math.acos(dot / mag1 / mag2) * 180 / 3.14159;
   };
 
-  var angles = [];
-  _.each(data.skeletons, function(skeleton) {
-    var joint = skeleton.joints;
+  var joint = data.skeletons[0].joints;
 
-    angles.push(
-      getAngle(joint[beforeJoint], joint[middleJoint], joint[afterJoint])
-    );
-  });
-  return angles;
+  return getAngle(joint[beforeJoint], joint[middleJoint], joint[afterJoint]);
 }

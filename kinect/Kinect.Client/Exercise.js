@@ -1,47 +1,78 @@
-var Exercise = function (skeleton) {
-	this.skeleton = skeleton;
-	this.repetitions = 0;
-	this.prevAngle = null;
-	this.currAngle = null;
-	this.prevAngleChange = null;
-	this.currAngleChange = null;
+var average = function(arr) {
+  return _.reduce(arr, function (sum, x) { return sum + x }, 0) / arr.length;
 };
 
-Exercise.prototype.getCurrentAngle = function (data) {
-	this.prevAngle = this.currAngle;
-	this.currAngle = this.skeleton.jointAngle(data, "handleft", "shouldercenter", "hipcenter")[0];
-}
+var WINDOW_SIZE = 9;
+
+var Exercise = function (skeleton) {
+	this.skeleton = skeleton;
+  this.state = "up";
+	this.repetitions = 0;
+	this.angleWindow = [];
+};
+
+Exercise.prototype.updateAngle = function (data) {
+	this.angleWindow.push(this.skeleton.jointAngle(data, "handleft", "shouldercenter", "hipcenter"));
+
+  if (this.angleWindow.length > WINDOW_SIZE) {
+    this.angleWindow = _.rest(this.angleWindow);
+  }
+};
+
+Exercise.prototype.getCurrentAngle = function () {
+  var lower = Math.floor(this.angleWindow.length / 3 * 2);
+  return average(this.angleWindow.slice(lower));
+};
+
+Exercise.prototype.getPrevAngle = function () {
+  var lower = Math.floor(this.angleWindow.length / 3);
+  var upper = Math.floor(this.angleWindow.length / 3 * 2);
+  return average(this.angleWindow.slice(lower, upper));
+};
+
+Exercise.prototype.getPrevPrevAngle = function () {
+  var upper = Math.floor(this.angleWindow.length / 3);
+  return average(this.angleWindow.slice(0, upper));
+};
 
 Exercise.prototype.getCurrentAngleChange = function () {
-	this.prevAngleChange = this.currAngleChange;
-	this.currAngleChange = this.getAngleChange();
-}
+  return this.getCurrentAngle() - this.getPrevAngle();
+};
 
-Exercise.prototype.getAngleChange = function () {
-	return this.currAngle - this.prevAngle;
-}
+Exercise.prototype.getPrevAngleChange = function () {
+  return this.getPrevAngle() - this.getPrevPrevAngle();
+};
 
-Exercise.prototype.checkConstraints = function () {
-	if (this.prevAngleChange > 0 && this.currAngleChange < 0) {
-		if (this.prevAngle > 130 && this.currAngle > 130) {
-			return true;
-		}
-	}
-}
+Exercise.prototype.hasFinishedRep = function () {
+  if (this.state == "up") {
+    if (this.getPrevAngleChange() > 0 && this.getCurrentAngleChange() < 0) {
+      if (this.getPrevAngle() > 90 && this.getCurrentAngle() > 90) {
+        this.state = "down";
+      }
+    }
+  } else {
+    if (this.getPrevAngleChange() < 0 && this.getCurrentAngleChange() > 0) {
+      if (this.getPrevAngle() < 90 && this.getCurrentAngle() < 90) {
+        this.state = "up";
+        return true;
+      }
+    }
+  }
+  return false;
+};
+
+Exercise.prototype.checkCorrectElbow = function() {
+};
 
 Exercise.prototype.updateRepetitions = function (jsonObject) {
-	this.getCurrentAngle(jsonObject);
-	this.getCurrentAngleChange();
+  this.updateAngle(jsonObject);
 
-	console.log({
-		"prevAngle": this.prevAngle,
-		"currAngle": this.currAngle,
-		"prevAngleChange": this.prevAngleChange,
-		"currAngleChange": this.currAngleChange
-	})
+	//console.log((this.getPrevAngleChange() > 0) && (this.getCurrentAngleChange() < 0));
+  //console.log(this.getPrevAngle() + "|" + this.getCurrentAngle());
+  console.log(this.state);
 
-	if (this.checkConstraints()) {
-		$("#repetitions").html(++this.repetitions);
+	if (this.hasFinishedRep()) {
+		$("#repetitions").text(++this.repetitions);
 	}
-}
+};
 

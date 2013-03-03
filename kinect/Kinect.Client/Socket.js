@@ -39,13 +39,6 @@
         // Check for repetition completion
         exercise.updateRepetitions(jsonObject);
 
-        // Output the angles
-        /*
-        var leftAngle = skeleton.jointAngle(jsonObject, 'handleft', 'shouldercenter', 'hipcenter')[0];
-        var rightAngle = skeleton.jointAngle(jsonObject, 'handright', 'shouldercenter', 'hipcenter')[0];
-        console.log('left : ' + leftAngle + " | right : " + rightAngle);
-        */
-
         // Inform the server about the update.
         socket.send("Skeleton updated on: " + (new Date()).toDateString() + ", " + (new Date()).toTimeString());
     };
