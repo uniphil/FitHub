@@ -23,31 +23,39 @@ from awesome.models import Message, ExerciseType, MailSendLog
 @app.route('/', methods=['GET', 'POST'])
 def main():
     form = SignupForm(request.form)
-
-    if request.method == 'POST' and form.validate():
-        thou = Interested(name=form.email.name, email=form.email.data)
-        thou.save()
-        message = render_template('signup-email.html', you=thou)
-        data = {
-            'to': thou.email,
-            'from': 'hello@fithub.mailgun.org',
-            'subject': 'FitHub: Your Pocket Personal Trainer',
-            'html': message,
-        }
-        auth = ('api', app.config['MAILGUN_API_KEY'])
-        send_url = '/'.join([app.config['MAILGUN_API_URL'], 'messages'])
-        r = requests.post(send_url, auth=auth, data=data)
-
-        log = MailSendLog()
-        log.code = r.status_code
-        log.text = r.text
-        log.save()
-
-        form = SignupForm()  # reset
-        session['signed_up'] = True
-
     first_video = random.choice([True, False])
-    return render_template('main.html', form=form, first_video=first_video)
+    response_code = 200
+
+    if request.method == 'POST':
+        if form.validate():
+            thou = Interested(name=form.email.name, email=form.email.data)
+            thou.save()
+            message = render_template('signup-email.html', you=thou)
+            data = {
+                'to': thou.email,
+                'from': 'hello@fithub.mailgun.org',
+                'subject': 'FitHub: Your Pocket Personal Trainer',
+                'html': message,
+            }
+            auth = ('api', app.config['MAILGUN_API_KEY'])
+            send_url = '/'.join([app.config['MAILGUN_API_URL'], 'messages'])
+            r = requests.post(send_url, auth=auth, data=data)
+
+            log = MailSendLog()
+            log.code = r.status_code
+            log.text = r.text
+            log.save()
+
+            thou.emailed = True if log.code == 200 else 'ERR'
+            thou.save()
+
+            form = SignupForm()  # reset
+            session['signed_up'] = True
+        else:
+            # form didn't validate
+            response_code = 400
+
+    return render_template('main.html', form=form, first_video=first_video), response_code
 
 
 @app.route('/training')
