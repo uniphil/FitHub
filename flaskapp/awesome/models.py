@@ -46,3 +46,9 @@ class Message(Model):
             self.recipient = kwargs.get('recipient')
             self.subject = kwargs.get('subject', '')
 
+
+class MailSendLog(Model):
+
+    _collection_name = 'mail_post_logs'
+
+
