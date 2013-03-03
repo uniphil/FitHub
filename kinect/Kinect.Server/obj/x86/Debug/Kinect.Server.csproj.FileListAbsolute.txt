@@ -23,3 +23,9 @@ C:\Users\Clarence\Kinect\KinectHTML5\Kinect.Server\bin\Debug\Kinect.Server.exe.c
 C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Server\bin\Debug\Kinect.Server.exe.config
 C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Server\obj\x86\Debug\Kinect.Server.exe
 C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Server\obj\x86\Debug\Kinect.Server.pdb
+C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Server\bin\Debug\Kinect.Server.exe
+C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Server\bin\Debug\Fleck.dll
+C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Server\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Server\bin\Debug\Microsoft.Expression.Drawing.xml
+C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Server\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Clarence\Documents\GitHub\FitHub\kinect\Kinect.Server\bin\Debug\Kinect.Server.pdb
