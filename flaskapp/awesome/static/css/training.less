@@ -1,0 +1,121 @@
+@import "style";
+@import "main";
+
+body {
+	color: @lightgrey;
+	background-color: @white;
+}
+
+h2 {
+	font-size: 1rem * @grb;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+h3 {
+	font-size: 1rem;
+	font-weight: 800;
+	text-transform: uppercase;
+	margin-bottom: 1rem * @grs;
+}
+p {
+	font-size: 1rem;
+	line-height: 1rem;
+}
+#main li {
+	display: block;
+	&:hover {
+		background-color: @selectionred;
+		color: @white;
+		cursor: pointer;
+		
+	}
+}
+#leftmenubg, #leftmenu {
+	width: 15rem;
+	position: fixed;
+	z-index: 1;
+}
+#leftmenubg {
+	height: 10000px;
+	box-shadow: -20px -80px 80px 0 rgba(100, 100, 100, .1) inset,
+		0px -80px 80px 0 rgba(0, 0, 0, .7);
+}
+#leftmenu {
+	position: fixed;
+	left: 0;
+	top: @headerheight;
+	li {
+		height: @headerheight;
+		line-height: @headerheight;
+		font-size: @headerheight * @grs;
+		span {
+			font-size: 1rem;
+			width: 1rem;
+			padding: 0 1rem;
+			display: inline-block;
+		}
+	}
+}
+li.selected {
+	position: relative;
+	color: @white;
+	background-color: @selectionred;
+	&:before {
+		position: absolute;
+		left: 15rem;
+		width: 0;
+		height: 0;
+		border-top: @headerheight / 2 solid transparent;
+		border-left: @headerheight * 2/  3 solid @selectionred;
+		border-bottom: @headerheight / 2 solid transparent;
+		content:'';
+	}
+}
+#mainright {
+	position: relative;
+	margin: 0 0 0 15rem;
+	#sortmenu {
+		padding-left: 1rem * @grb * @grb * @grb;
+		width: 100%;
+		border-left: 1px @lightgrey solid;
+		border-bottom: 1px @lightgrey solid;
+		height: @headerheight;
+		p {
+			line-height: @headerheight;
+			float: left;
+		}
+		status {
+			vertical-align: middle;
+			float: left;
+		}
+	}
+	li {
+		@liheight: 1rem * @grb * @grb * @grb * @grb;
+		// .border-radius (1rem 0 0 1rem);
+		height: @liheight;
+		width: 100%;
+		margin: 1rem * @grs * @grs * @grs 0;
+		img {
+			height: @liheight - .5rem;
+			width: @liheight - .5rem;
+			padding: (@liheight - @liheight + .5rem) / 2;
+			float: left;
+		}
+		.status {
+			height: 100%;
+			float: left;
+			display: inline;
+			width: 1rem;
+			// .border-radius (1rem 0 0 1rem);
+		}
+		.green {
+			background-color: green;
+		}
+		.yellow {
+			background-color: yellow;
+		}
+		.red {
+			background-color: red;
+		}
+	}
+}

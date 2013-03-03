@@ -20,5 +20,5 @@ class LoginForm(Form):
 
 
 class SignupForm(Form):
-    name = TextField('name')
-    email = TextField('email', validators=[Required(), Email()])
+    name = TextField('(your name here)')
+    email = TextField('(your email)', validators=[Required(), Email()])

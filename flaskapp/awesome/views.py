@@ -51,6 +51,16 @@ def main():
     return render_template('main.html', form=form)
 
 
+@app.route('/training')
+def training():
+    return "training yo"
+
+
+@app.route('/stats')
+def stats():
+    return 'stats yo'
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     return redirect(url_for('main'))

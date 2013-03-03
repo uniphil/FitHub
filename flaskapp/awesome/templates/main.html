@@ -2,56 +2,22 @@
 
 {% block content %}
 
-    <h1>FitHub</h1>
+    <div id="home-container">
 
-    <div id="signupblock">
-        {% if session.signed_up %}
-            <div class="yourock">   
-                you rock.
-            </div>
-        {% endif %}
+        <div id="hometext">
 
-        <div id="signup" class="sign{% if session.signed_up %}ed{% endif %}">
+            <h1>You're<br/>hurting<br/>yourself.</h1>
 
-            <style>
-                {# todo: GET THIS OUTA HERE! #}
-                .signed {
-                    display: none;
-                }
-            </style>
-
-            <h3>sign up!</h3>
-
-            <form method="POST" action="{{ url_for('main') }}">
+            <form  id="pitch" method="POST" action="{{ url_for('main') }}">
                 {{ form.csrf_token }}
-                <div class="form-input">
-                    {% if form.name.errors %}
-                        <ul class="login-errors">
-                            {% for error in form.name.errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                    {{ form.name(autofocus=true) }}
-                    {{ form.name.label }}
-                </div>
-                <div class="form-input">
-                    {% if form.email.errors %}
-                        <ul class="login-errors">
-                            {% for error in form.email.errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                    {{ form.email(required=true, autofocus=true) }}
-                    {{ form.email.label }}
-                </div>
-                <button type="submit">I'm in &raquo;</button>
+                <p>100 000 people do their workouts wrong. Their chances of getting the mumps is infinite. Unless they just fit through the hub. Goddamit.</p>
+                <p>Want it?</p>
+                <p>My name is {{ form.name(autofocus=true, placeholder=form.name.label.text) }}, and my email address is {{ form.email(required=true, placeholder=form.email.label.text) }}. <button type="submit">Get it first &raquo;</button></p>
             </form>
 
         </div>
+        
+        <video id="vidibigi" src="{{ url_for('static', filename='video/bgvid.mp4') }}" autoplay ></video>
     </div>
 
 {% endblock %}
-
-
