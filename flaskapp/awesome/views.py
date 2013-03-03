@@ -71,14 +71,14 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm(request.form)
+    return redirect(url_for('main'))
 
+    form = LoginForm(request.form)
     if request.method == 'POST' and form.validate():
         user = User.find_one({'username': form.username.data})
         if user and user.check_password(form.password.data):
             login_user(user)
             return redirect(url_for('main'))
-
     return render_template('login.html', form=form)
 
 
