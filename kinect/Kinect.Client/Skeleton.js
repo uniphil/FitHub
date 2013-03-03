@@ -45,7 +45,7 @@ Skeleton.prototype.renderJoints = function (data) {
     this.context.closePath();
     this.context.fill();
 
-    return this;	
+    return this;
 }
 
 Skeleton.prototype.drawLimb = function (data, start, end) {
@@ -84,3 +84,24 @@ Skeleton.prototype.renderLimbs = function (data) {
 	    this.drawLimb(skeleton, "ankleright", "footright");
 	}
 };
+
+Skeleton.prototype.jointAngle = function(data, beforeJoint, middleJoint, afterJoint) {
+  var getAngle = function (p1, p2, p3) {
+    var v1 = { x : p1.x - p2.x, y : p1.y - p2.y, z : p1.z - p2.z };
+    var v2 = { x : p3.x - p2.x, y : p3.y - p2.y, z : p3.z - p2.z };
+    var mag1 = Math.sqrt(v1.x*v1.x + v1.y*v1.y + v1.z*v1.z);
+    var mag2 = Math.sqrt(v2.x*v2.x + v2.y*v2.y + v2.z*v2.z);
+    var dot = v1.x*v2.x + v1.y*v2.y + v1.z*v2.z;
+    return Math.acos(dot / mag1 / mag2) * 180 / 3.14159;
+  };
+
+  var angles = [];
+  _.each(data.skeletons, function(skeleton) {
+    var joint = skeleton.joints;
+
+    angles.push(
+      getAngle(joint[beforeJoint], joint[middleJoint], joint[afterJoint])
+    );
+  });
+  return angles;
+}
