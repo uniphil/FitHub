@@ -98,9 +98,7 @@ def clear_session():
 
 @app.route('/messages/', methods=['POST'])
 def recieve_message():
-
      if request.method == 'POST':
-        
         message = Message(
             sender=request.form.get('recipient'),
             subject=request.form.get('subject', ''),
@@ -110,6 +108,14 @@ def recieve_message():
         message.save()
 
      return make_response('cool cool', 200)
+
+@app.route('/live_demo')
+def live_demo():
+  return render_template('demo.html', live=True)
+
+@app.route('/canned_demo')
+def canned_demo():
+  return render_template('demo.html', live=False)
 
 
 @app.errorhandler(404)
