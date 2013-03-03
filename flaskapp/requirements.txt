@@ -11,4 +11,5 @@ distribute==0.6.31
 gunicorn==0.17.2
 passlib==1.6.1
 pymongo==2.4.2
+requests==1.1.0
 wsgiref==0.1.2
