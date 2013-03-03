@@ -1,6 +1,65 @@
-@import "normalize.css";
-@import "variables.less";
-@import "mixins.less";
-@import "utils.less";
- 
-// stylin goes here yo!
+@import "style";
+
+#home-container {
+	color: @white;
+	background-color: @lightgrey;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+}
+
+#vidibigi {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -10;
+}
+
+#hometext {
+	width: 700px;
+	padding: 1rem * @grb * @grb + @headerheight 1rem * @grb * @grb;
+
+	h1 {
+		font-weight: 800; 
+		font-size: 1rem * @grb * @grb * @grb;
+		line-height: 1rem * @grb * @grb * @grb;
+		padding: @grs 0;
+		text-transform: uppercase;
+		text-align: left;
+	}
+	p {
+		margin: 1em 0;
+		font-size: 1rem * @grb;
+		line-height:  1rem * @grb * @grb;
+	}
+
+	input, button {
+		line-height: inherit;
+		margin: 0;
+		padding: 0;
+		line-height: 1.2em;
+		height: 1.2em;
+		font: inherit;
+		display: inline-block;
+		vertical-align: baseline;
+		text-align: center;
+		color: inherit;
+		background: none;
+		border: none;
+		overflow: show;
+	}
+
+	input {
+		border-bottom: 2px dashed white;
+	}
+
+	button {
+
+	}
+
+
+}

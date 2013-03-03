@@ -1,0 +1,78 @@
+@import "mixins/all";
+.reset();
+*:focus {
+	outline: none;
+}
+
+@grb: 1.61803398875rem;
+@grs: 1/@grb;
+
+@headerheight: 1rem * @grb * @grb;
+@footerheight: 1rem * @grb;
+
+@white: #fff;
+@lightgrey: #c4c4c4;
+@selectionred: #ffcccc;
+@black: #000;
+
+body{
+	font-size: 62.5%;
+	font-family: 'Raleway', 'Helvetica Neue', 'Helvetica', 'Ariel', sans-serif;
+	background-color: @lightgrey;
+}
+a, li {
+	vertical-align: middle;
+}
+a, a:visited {
+	text-decoration: none;
+	color: @black;
+}
+a:hover {
+	color: #5dcff4;
+}
+header {
+	z-index: 2;
+	box-shadow: 0px 2px 20px rgba(100, 100, 100, .1);
+	position: fixed;
+	top: 0;
+	height: @headerheight;
+	width: 100%;
+	background-color: @white;
+	padding-left: 1rem * @grb * @grb;
+	border-bottom: 1px #aaaaaa solid;
+	line-height: @headerheight;
+	font-size: @headerheight * @grs;
+	line-height: @headerheight;
+	li {
+		display: inline;
+	}
+	a, a:visited {
+		padding-right: 1rem * @grb * @grb;
+		font-size: 1rem;
+		color: @black;
+	}
+	.logo {
+		padding-right: 1rem * @grb * @grb;
+		height: @headerheight;
+		width: @logoheight * @logoratio;
+		display: inline-block;
+		background: transparent url('../img/logo.png') left center no-repeat;
+		background-size: @logoheight*@logoratio @logoheight;
+	}
+	.logo:hover {
+		background-image: url('../img/logo_hov.png');
+	}
+	// why isn't this working?
+	.login {
+		position: fixed;
+		right: 0;
+	}
+}
+
+@logoheight: @headerheight * @grs;
+@logoratio: 278/86;
+
+#main {
+	padding-top: @headerheight;
+	width: 100%;
+}

@@ -3,11 +3,11 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>{{ title|default('awesome') }}</title>
+        <title>{{ title|default('FitHub') }}</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width" />
 
@@ -22,8 +22,8 @@
         <link rel="author" type="text/plain" href="{{ url_for('static', filename='public/humans.txt') }}" />
         <link rel="robots" type="text/plain" href="{{ url_for('static', filename='public/robots.txt') }}" />
 
-        <link href='//fonts.googleapis.com/css?family=Vollkorn|Ubuntu:300,400' rel='stylesheet' type='text/css' />
-        <link href="{{ url_for('static', filename='css/main.less') }}" rel="stylesheet" type="text/less" />
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
+        <link href="{{ url_for('static', filename='css/training.less') }}" rel="stylesheet" type="text/less" />
         <script src="{{ url_for('static', filename='js/vendor/less.js') }}"></script>
         <script src="{{ url_for('static', filename='js/vendor/modernizr-2.6.2.min.js') }}"></script>
     </head>
