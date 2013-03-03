@@ -3,7 +3,7 @@ var average = function(arr) {
 };
 
 var WINDOW_SIZE = 15;
-var SYMETRICAL_THRESHOLD = 50;
+var SYMETRICAL_THRESHOLD = 60;
 var TOO_FAR_THRESHOLD = 240;
 var UP_THRESHOLD = 130;
 
@@ -133,17 +133,10 @@ Exercise.prototype.addError = function(error) {
   this.setErrors[error] = error;
 }
 
-Exercise.prototype.resetRep = function() {
-  this.repErrors = {};
-};
-
-Exercise.prototype.resetSet = function() {
-  this.setErrors = {};
-};
-
 Exercise.prototype.checkCorrectElbow = function() {
 };
 
+var slowCounter = 0;
 Exercise.prototype.updateRepetitions = function (jsonObject) {
   this.updateAngle(jsonObject);
   this.updateFootDistance(jsonObject);
@@ -154,18 +147,16 @@ Exercise.prototype.updateRepetitions = function (jsonObject) {
 
   this.checkIsTooFar();
 
-	if (this.hasFinishedRep() && this.repErrors.length != 0) {
-		$("#repetitions").text(++this.repetitions);
+	if (this.hasFinishedRep()) {
+    if (this.repErrors.length != 0) {
+      this.repErrors = {};
+      $("#repetitions").text(++this.repetitions);
+    }
 	}
 
-  //$('#info').html('')
-  //  .append('Range : ' + this.getRange() + " state : " + this.state).append($('<br>'))
-  //  .append('Left : ' + this.getCurrentAngle().left).append($('<br>'))
-  //  .append('Right : ' + this.getCurrentAngle().right).append($('<br>'));
-
-  $('#errors').html('');
-  _.each(this.repErrors, function(error) {
-    $('#errors').append($('<p>').text(error));
-  });
+  slowCounter = (slowCounter + 1) % 10;
+  if (slowCounter == 0) {
+    $('#errors').html(_.keys(this.repErrors).join('<br/>'));
+  }
 };
 

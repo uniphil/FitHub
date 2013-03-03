@@ -37,7 +37,11 @@
                         <div class="status {{ exercise.status }}"></div>
                         <img src="{{ url_for('static', filename=exercise.diagram) }}" alt="This is nothing" />
                         <div class="textinfo">
-                            <h2>{{ exercise.name }}</h2>
+                            {% if exercise.name == "Jumping Jacks" %}
+                              <a href="{{ url_for('demo') }}"><h2>{{ exercise.name }}</h2></a>
+                            {% else %}
+                              <h2>{{ exercise.name }}</h2>
+                            {% endif %}
                             <h3>Status: {{ exercise.status }}</h3>
                             <p>{{ exercise.description }}</p>
                         </div>
