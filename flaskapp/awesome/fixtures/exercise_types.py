@@ -13,6 +13,13 @@ def create_types(clear=True):
 
 types = [
     {
+        'name': 'Jumping Jacks',
+        'status': 1,
+        'description': 'Start feet together and arms at sides. Jump up and spread legs shoulder width apart while raising hands straight above your head. Then jump back to the original position.',
+        'diagram': '',
+        'tags': ['cardio'],
+    },
+    {
         'name': 'Ball Crunch',
         'status': 1,
         'description': 'Keep feet flat on the floor and raise upper body toward ceiling, contracting your abdominal muscles as you lift keeping tension on abs.',

@@ -110,14 +110,9 @@ def recieve_message():
 
      return make_response('cool cool', 200)
 
-@app.route('/live_demo')
-def live_demo():
-  return render_template('demo.html', live=True)
-
-@app.route('/canned_demo')
-def canned_demo():
-  return render_template('demo.html', live=False)
-
+@app.route('/demo')
+def demo():
+  return render_template('demo.html', live=request.args.get('live', 'true') == 'true')
 
 @app.errorhandler(404)
 def page_not_found(error):
