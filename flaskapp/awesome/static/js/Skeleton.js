@@ -31,7 +31,7 @@ Skeleton.prototype.render = function (data) {
 Skeleton.prototype.renderJoints = function (data) {
 
     this.context.clearRect(0, 0, canvas.width, canvas.height);
-    this.context.fillStyle = "#FF0000";
+    this.context.fillStyle = "#3c3";
     this.context.beginPath();
 
     // Display the skeleton joints.
@@ -51,7 +51,7 @@ Skeleton.prototype.renderJoints = function (data) {
 Skeleton.prototype.drawLimb = function (data, start, end) {
     var from = data[start], to = data[end];
     if (from && to) {
-        this.context.strokeStyle = '#fff';
+        this.context.strokeStyle = '#66f';
         this.context.lineWidth = 6;
         this.context.beginPath();
         this.context.moveTo(from.x, from.y);
