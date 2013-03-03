@@ -15,6 +15,7 @@ var Exercise = function (skeleton) {
 	this.repetitions = 0;
 	this.leftAngleWindow = [];
 	this.rightAngleWindow = [];
+  this.footWindow = [];
 };
 
 Exercise.prototype.updateAngle = function (data) {
@@ -32,6 +33,13 @@ Exercise.prototype.updateAngle = function (data) {
     this.rightAngleWindow = _.rest(this.rightAngleWindow);
   }
 };
+
+Exercise.prototype.updateFootDistance = function (data) {
+  this.footWindow.push(this.skeleton.getDistanceByAxis(data, "ankleleft", "ankleright", "x"));
+  if (this.footWindow.length > (WINDOW_SIZE/3)) {
+    this.footWindow = _.rest(this.footWindow);
+  }
+}
 
 Exercise.prototype.getCurrentAngle = function () {
   var lower = Math.floor(this.leftAngleWindow.length / 3 * 2);
@@ -79,13 +87,13 @@ Exercise.prototype.getPrevAngleChange = function () {
 Exercise.prototype.hasFinishedRep = function () {
   if (this.state == "up") {
     if (this.getPrevAngleChange().left > 0 && this.getCurrentAngleChange().left < 0) {
-      if (this.getPrevAngle().left > UP_THRESHOLD && this.getCurrentAngle().left > UP_THRESHOLD) {
+      if (this.getPrevAngle().left > UP_THRESHOLD && this.getCurrentAngle().left > UP_THRESHOLD && _.max(this.footWindow) > 100 ) {
         this.state = "down";
       }
     }
   } else {
     if (this.getPrevAngleChange().left < 0 && this.getCurrentAngleChange().left > 0) {
-      if (this.getPrevAngle().left < UP_THRESHOLD && this.getCurrentAngle().left < UP_THRESHOLD) {
+      if (this.getPrevAngle().left < UP_THRESHOLD && this.getCurrentAngle().left < UP_THRESHOLD && _.min(this.footWindow) < 100 ) {
         this.state = "up";
         return true;
       }
@@ -138,6 +146,7 @@ Exercise.prototype.checkCorrectElbow = function() {
 
 Exercise.prototype.updateRepetitions = function (jsonObject) {
   this.updateAngle(jsonObject);
+  this.updateFootDistance(jsonObject);
 
   if (!this.isSymetrical()) {
     this.addError("Arms were not symetrical");
@@ -152,8 +161,7 @@ Exercise.prototype.updateRepetitions = function (jsonObject) {
   $('#info').html('')
     .append('Range : ' + this.getRange() + " state : " + this.state).append($('<br>'))
     .append('Left : ' + this.getCurrentAngle().left).append($('<br>'))
-    .append('Right : ' + this.getCurrentAngle().right).append($('<br>'))
-
+    .append('Right : ' + this.getCurrentAngle().right).append($('<br>'));
 
   $('#errors').html('');
   _.each(this.repErrors, function(error) {

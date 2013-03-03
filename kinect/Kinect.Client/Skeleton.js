@@ -108,3 +108,12 @@ Skeleton.prototype.jointAngle = function(data, beforeJoint, middleJoint, afterJo
 
   return getAngle(joint[beforeJoint], joint[middleJoint], joint[afterJoint]);
 }
+
+Skeleton.prototype.getDistanceByAxis = function (data, firstJoint, secondJoint, axis) {
+    var joints = data.skeletons[0].joints;
+    if (axis === "x") {
+        return Math.abs(joints[firstJoint].x - joints[secondJoint].x);
+    } else if (axis === "y") {
+        return Math.abs(joints[firstJoint].y - joints[secondJoint].y);
+    }
+}
