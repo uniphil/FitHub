@@ -115,9 +115,9 @@ def clear_session():
 def recieve_message():
     if request.method == 'POST':
         message = Message(
-            sender=request.form.get('recipient'),
+            recipient=request.form.get('recipient'),
             subject=request.form.get('subject', ''),
-            body_plain=request.form.get('body-plain', ''),
+            body=request.form.get('body-plain', ''),
         )
 
         message.save()

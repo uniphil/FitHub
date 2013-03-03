@@ -52,9 +52,10 @@ class Message(Model):
     def __init__(self, **kwargs):
         """ugh"""
         if kwargs:
-            self.sender = kwargs.get('sender')
             self.recipient = kwargs.get('recipient')
-            self.subject = kwargs.get('subject', '')
+            self.sender = kwargs.get('sender')
+            self.subject = kwargs.get('subject')
+            self.body = kwargs.get('body', '')
 
 
 class MailSendLog(Model):
