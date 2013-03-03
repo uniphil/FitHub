@@ -19,7 +19,8 @@
 
     // Connection established.
     socket.onopen = function () {
-        status.innerHTML = "Connection successful.";
+        status.innerHTML = "Connected";
+        $('.status').hide();
     };
 
     // Connection closed.
@@ -29,8 +30,6 @@
 
     // Receive data FROM the server!
     socket.onmessage = function (evt) {
-        status.innerHTML = "Kinect data received.";
-
         // Get the data in JSON format.
         var jsonObject = JSON.parse(evt.data);
 
@@ -41,6 +40,6 @@
         exercise.updateRepetitions(jsonObject);
 
         // Inform the server about the update.
-        //socket.send("Skeleton updated on: " + (new Date()).toDateString() + ", " + (new Date()).toTimeString());
+        socket.send("Skeleton updated on: " + (new Date()).toDateString() + ", " + (new Date()).toTimeString());
     };
 };

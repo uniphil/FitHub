@@ -1,0 +1,27 @@
+{% extends 'ui.html' %}
+
+{% block content %}
+<div class="demo-container">
+  {% if live %}
+  <meta name="port" value="8081"/>
+  {% else %}
+  <meta name="port" value="8082"/>
+  {% endif %}
+
+  <div id="info"></div>
+
+  <div class="status">
+    Status: <label id="status">None</label>
+  </div>
+  <br />
+  <div class="rep-heading">Repetitions: <label id="repetitions">0</label></div>
+  <canvas id="canvas" width="640" height="480"></canvas>
+  <div id="errors"></div>
+</div>
+{% endblock %}
+
+{% block moar_js %}
+<script src="{{ url_for('static', filename="js/Skeleton.js")}}"></script>
+<script src="{{ url_for('static', filename="js/Socket.js")}}"></script>
+<script src="{{ url_for('static', filename="js/Exercise.js")}}"></script>
+{% endblock %}
