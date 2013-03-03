@@ -107,12 +107,11 @@ def recieve_message():
         )
 
         message.save()
-
-     return make_response('cool cool', 200)
+return make_response('cool cool', 200)
 
 @app.route('/demo')
 def demo():
-  return render_template('demo.html', live=request.args.get('live', 'true') == 'true')
+  return render_template('demo.html', live=request.args.get('live', 'false') == 'true')
 
 @app.errorhandler(404)
 def page_not_found(error):
