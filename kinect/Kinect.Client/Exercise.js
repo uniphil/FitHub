@@ -77,13 +77,13 @@ Exercise.prototype.getPrevAngleChange = function () {
 Exercise.prototype.hasFinishedRep = function () {
   if (this.state == "up") {
     if (this.getPrevAngleChange().left > 0 && this.getCurrentAngleChange().left < 0) {
-      if (this.getPrevAngle().left > 90 && this.getCurrentAngle().left > 90) {
+      if (this.getPrevAngle().left > 160 && this.getCurrentAngle().left > 160) {
         this.state = "down";
       }
     }
   } else {
     if (this.getPrevAngleChange().left < 0 && this.getCurrentAngleChange().left > 0) {
-      if (this.getPrevAngle().left < 90 && this.getCurrentAngle().left < 90) {
+      if (this.getPrevAngle().left < 160 && this.getCurrentAngle().left < 160) {
         this.state = "up";
         return true;
       }
@@ -130,7 +130,7 @@ Exercise.prototype.updateRepetitions = function (jsonObject) {
     this.addError("Arms were not symetrical");
   }
 
-	if (this.hasFinishedRep()) {
+	if (this.hasFinishedRep() && this.repErrors.length == 0) {
 		$("#repetitions").text(++this.repetitions);
 	}
 
