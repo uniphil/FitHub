@@ -16,8 +16,7 @@ h2 {
 	font-weight: 100;
 	font-size: 1rem * @grb * @grb * @grb;
     color: @black;
-    // color: @lightgrey + #111;
-    padding: 1rem * @grs * @grs 0;
+    padding: 1rem * @grs * @grs * @grs  0 1rem * @grs * @grs 0;
     cursor: pointer;
 }
 h3 {
@@ -26,7 +25,7 @@ h3 {
 	font-weight: 800;
 	text-transform: uppercase;
 	margin-bottom: 1rem * @grs;
-	color: @lightgrey + #111;
+	color: @black + #777;
 }
 .textinfo p {
 	font-size: 1rem;
@@ -51,17 +50,26 @@ h3 {
 	position: fixed;
 	z-index: 1;
 }
+#leftmenu .logo {
+	height: @headerheight + 1rem;
+	display: block;
+	padding-right: 1rem * @grb * @grb;
+	background: transparent url('../img/logofull.png') left top no-repeat;
+	&:hover {
+		background: transparent url('../img/logofull_hov.png') left top no-repeat;
+	}
+}
 #leftmenubg {
 	height: 10000px;
 	box-shadow: -20px -80px 80px 0 rgba(100, 100, 100, .1) inset,
 		0px -17px 17px 0 rgba(100, 100, 100, .3);
+		border-right: 2px @lightgrey + #222 solid;
+	background-color: @white;
 }
 #leftmenu {
-	color: @lightgrey;
-	position: fixed;
-	left: 0;
-	top: @headerheight;
+	color: @black + #333;
 	li {
+		border-top: 1px @white - #0a0a0a solid;
 		height: @headerheight;
 		line-height: @headerheight;
 		font-size: @headerheight * @grs;
@@ -82,7 +90,7 @@ li.selected {
 	color: @accent;
 	box-shadow: -2px 0px 8px rgba(100, 100, 100, .1);
 	background-color: @white;
-	&:before {
+	&:after {
 		position: absolute;
 		left: 15rem;
 		width: 0;
@@ -92,6 +100,17 @@ li.selected {
 		border-bottom: @headerheight / 2 solid transparent;
 		content:'';
 	}
+	&:before {
+		position: absolute;
+		left: 15rem;
+		width: 8px;
+		height: 4px;
+		border-top: @headerheight / 2 solid transparent;
+		border-left: @headerheight * 2/  3 solid @lightgrey + #222;
+		border-bottom: @headerheight / 2 solid transparent;
+		content:'';
+	}
+
 }
 #mainright {
 	position: relative;
@@ -173,4 +192,23 @@ li.selected {
 			}
 		}
 	}
+}
+
+canvas {
+	display: block;
+	margin: 1rem * @grb * @grb * @grb auto;
+	.border-radius(200px);
+	&:hover {
+		cursor: pointer;
+	}
+}
+h4 {
+	color: @black;
+	text-align: center;
+	font-size: 1rem * @grb * @grb * @grb;
+	font-weight: 100;
+}
+
+a.curr {
+	color: @orange;
 }

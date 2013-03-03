@@ -1,0 +1,1179 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot');
+  src: url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('../fonts/icomoon.woff') format('woff'), url('../fonts/icomoon.ttf') format('truetype'), url('../fonts/icomoon.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+  font-family: 'icomoon';
+  content: attr(data-icon);
+  speak: none;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"]:before {
+*/
+.icon-star:before,
+.icon-clock:before,
+.icon-arrow-up:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+.icon-star:before {
+  content: "\e000";
+}
+.icon-clock:before {
+  content: "\e001";
+}
+.icon-arrow-up:before {
+  content: "\e003";
+}
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+*:focus {
+  outline: none;
+}
+*::-moz-selection {
+  color: #ffffff;
+  background: #ff8800;
+}
+*::selection {
+  color: #ffffff;
+  background: #ff8800;
+}
+img::-moz-selection {
+  color: #ff8800;
+  background: #ff8800;
+}
+img::selection {
+  color: #ff8800;
+  background: #ff8800;
+}
+body {
+  font-weight: 400;
+  font-family: 'Raleway', 'Helvetica Neue', 'Helvetica', 'Ariel', sans-serif;
+  background-color: #c4c4c4;
+}
+a {
+  text-decoration: none;
+  color: #555555;
+  transition: color .5s;
+  -moz-transition: color .5s;
+  /* Firefox 4 */
+
+  -webkit-transition: color .5s;
+  /* Safari and Chrome */
+
+  -o-transition: color .5s;
+  /* Opera */
+
+}
+a:hover {
+  color: #ff8800;
+}
+li {
+  transition: color .2s, height .3s;
+  -moz-transition: color .2s, height .3s;
+  /* Firefox 4 */
+
+  -webkit-transition: color .2s, height .3s;
+  /* Safari and Chrome */
+
+  -o-transition: color .2s, height .3s;
+  /* Opera */
+
+}
+header {
+  z-index: 100;
+  box-shadow: 0px 2px 20px rgba(100, 100, 100, 0.1), 0 -24px 20px rgba(100, 100, 100, 0.05) inset;
+  position: fixed;
+  top: 0;
+  height: 2.618033988750235rem;
+  width: 100%;
+  background-color: #ffffff;
+  padding-left: 2.618033988750235rem;
+  border-bottom: 2px #e6e6e6 solid;
+  font-weight: 800;
+  line-height: 2.618033988750235rem;
+  font-size: 1.6180339887500002rem;
+  line-height: 2.618033988750235rem;
+  text-transform: uppercase;
+}
+header ul {
+  position: relative;
+  height: 2.618033988750235rem;
+  padding-right: 1.61803398875rem;
+}
+header ul li {
+  text-align: right;
+  float: right;
+  display: block;
+  line-height: 2.618033988750235rem;
+  height: 2.618033988750235rem;
+}
+header a {
+  padding-right: 2.618033988750235rem;
+  font-size: 1rem;
+  color: #888888;
+  line-height: 2.618033988750235rem;
+  vertical-align: middle;
+}
+header .logo {
+  padding-right: 2.618033988750235rem;
+  height: 2.618033988750235rem;
+  width: 4.238721696071809rem;
+  display: block;
+  float: left;
+  background: transparent url('../img/logo.png') left top no-repeat;
+  /*		padding-right: 1rem * @grb * @grb;
+		height: @headerheight;
+		width: @logoheight * @logoratio;
+		display: inline-block;
+		background: transparent url('../img/logo.png') left center no-repeat;
+		background-size: @logoheight*@logoratio @logoheight;
+*/
+}
+header .logo:hover {
+  background-image: url('../img/logo_hov.png');
+}
+.icon {
+  vertical-align: middle;
+}
+#main {
+  padding-top: 2.618033988750235rem;
+  width: 100%;
+}
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot');
+  src: url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'), url('../fonts/icomoon.woff') format('woff'), url('../fonts/icomoon.ttf') format('truetype'), url('../fonts/icomoon.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+  font-family: 'icomoon';
+  content: attr(data-icon);
+  speak: none;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"]:before {
+*/
+.icon-star:before,
+.icon-clock:before,
+.icon-arrow-up:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+.icon-star:before {
+  content: "\e000";
+}
+.icon-clock:before {
+  content: "\e001";
+}
+.icon-arrow-up:before {
+  content: "\e003";
+}
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+*:focus {
+  outline: none;
+}
+*::-moz-selection {
+  color: #ffffff;
+  background: #ff8800;
+}
+*::selection {
+  color: #ffffff;
+  background: #ff8800;
+}
+img::-moz-selection {
+  color: #ff8800;
+  background: #ff8800;
+}
+img::selection {
+  color: #ff8800;
+  background: #ff8800;
+}
+body {
+  font-weight: 400;
+  font-family: 'Raleway', 'Helvetica Neue', 'Helvetica', 'Ariel', sans-serif;
+  background-color: #c4c4c4;
+}
+a {
+  text-decoration: none;
+  color: #555555;
+  transition: color .5s;
+  -moz-transition: color .5s;
+  /* Firefox 4 */
+
+  -webkit-transition: color .5s;
+  /* Safari and Chrome */
+
+  -o-transition: color .5s;
+  /* Opera */
+
+}
+a:hover {
+  color: #ff8800;
+}
+li {
+  transition: color .2s, height .3s;
+  -moz-transition: color .2s, height .3s;
+  /* Firefox 4 */
+
+  -webkit-transition: color .2s, height .3s;
+  /* Safari and Chrome */
+
+  -o-transition: color .2s, height .3s;
+  /* Opera */
+
+}
+header {
+  z-index: 100;
+  box-shadow: 0px 2px 20px rgba(100, 100, 100, 0.1), 0 -24px 20px rgba(100, 100, 100, 0.05) inset;
+  position: fixed;
+  top: 0;
+  height: 2.618033988750235rem;
+  width: 100%;
+  background-color: #ffffff;
+  padding-left: 2.618033988750235rem;
+  border-bottom: 2px #e6e6e6 solid;
+  font-weight: 800;
+  line-height: 2.618033988750235rem;
+  font-size: 1.6180339887500002rem;
+  line-height: 2.618033988750235rem;
+  text-transform: uppercase;
+}
+header ul {
+  position: relative;
+  height: 2.618033988750235rem;
+  padding-right: 1.61803398875rem;
+}
+header ul li {
+  text-align: right;
+  float: right;
+  display: block;
+  line-height: 2.618033988750235rem;
+  height: 2.618033988750235rem;
+}
+header a {
+  padding-right: 2.618033988750235rem;
+  font-size: 1rem;
+  color: #888888;
+  line-height: 2.618033988750235rem;
+  vertical-align: middle;
+}
+header .logo {
+  padding-right: 2.618033988750235rem;
+  height: 2.618033988750235rem;
+  width: 4.238721696071809rem;
+  display: block;
+  float: left;
+  background: transparent url('../img/logo.png') left top no-repeat;
+  /*		padding-right: 1rem * @grb * @grb;
+		height: @headerheight;
+		width: @logoheight * @logoratio;
+		display: inline-block;
+		background: transparent url('../img/logo.png') left center no-repeat;
+		background-size: @logoheight*@logoratio @logoheight;
+*/
+}
+header .logo:hover {
+  background-image: url('../img/logo_hov.png');
+}
+.icon {
+  vertical-align: middle;
+}
+#main {
+  padding-top: 2.618033988750235rem;
+  width: 100%;
+}
+#home-container {
+  color: #ffffff;
+  background: #444444 url('../img/bgvidframe.jpg') 50%;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
+#hometext {
+  width: 700px;
+  padding: 5.23606797750047rem 2.618033988750235rem;
+}
+#hometext h1 {
+  font-weight: 800;
+  font-size: 4.236067977500615rem;
+  line-height: 4.236067977500615rem;
+  padding: 0.6180339887498547rem 0;
+  text-transform: uppercase;
+  text-align: left;
+}
+#hometext p {
+  margin: 1em 0;
+  font-size: 1.61803398875rem;
+  line-height: 2.618033988750235rem;
+}
+#hometext input,
+#hometext button {
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2em;
+  height: 1.2em;
+  font: inherit;
+  display: inline-block;
+  vertical-align: baseline;
+  text-align: center;
+  color: inherit;
+  background: none;
+  border: none;
+  overflow: show;
+}
+#hometext input {
+  border-bottom: 2px dashed white;
+}
+#hometext button {
+  cursor: pointer;
+  padding: 0 0.5em;
+  line-height: 1.5em;
+  height: 1.5em;
+  background: rgba(0, 0, 0, 0.333);
+  border: 1px solid rgba(127, 127, 127, 0.15);
+  border-radius: 3px;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+#hometext button:hover {
+  background: rgba(0, 0, 0, 0.667);
+  border: 1px solid rgba(127, 127, 127, 0.333);
+  border-radius: 9px;
+}
+#hometext #signupins {
+  -webkit-transition: all 0.667s ease;
+  -moz-transition: all 0.667s ease;
+  transition: all 0.667s ease;
+  -webkit-transition: all 0.667s ease;
+  -moz-transition: all 0.667s ease;
+  transition: all 0.667s ease;
+}
+#hometext #signupins.disabled {
+  opacity: 0.333;
+  background: rgba(180, 180, 180, 0.5);
+}
+#vidibigi {
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+#dimmer {
+  background-color: rgba(0, 0, 0, 0.333);
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.667)), to(rgba(0, 0, 0, 0.333)));
+  /* Konqueror */
+
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.667), rgba(0, 0, 0, 0.333));
+  /* FF 3.6+ */
+
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0.667), rgba(0, 0, 0, 0.333));
+  /* IE10 */
+
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0.667)), color-stop(100%, rgba(0, 0, 0, 0.333)));
+  /* Safari 4+, Chrome 2+ */
+
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.667), rgba(0, 0, 0, 0.333));
+  /* Safari 5.1+, Chrome 10+ */
+
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.667), rgba(0, 0, 0, 0.333));
+  /* Opera 11.10 */
+
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0.667) 0%, rgba(0, 0, 0, 0.333) 100%);
+  /* IE10+ */
+
+  background-image: linear-gradient(left, rgba(0, 0, 0, 0.667), rgba(0, 0, 0, 0.333));
+  /* the standard */
+
+  background-color: rgba(0, 0, 0, 0.333);
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.667)), to(rgba(0, 0, 0, 0.333)));
+  /* Konqueror */
+
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.667), rgba(0, 0, 0, 0.333));
+  /* FF 3.6+ */
+
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0.667), rgba(0, 0, 0, 0.333));
+  /* IE10 */
+
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0.667)), color-stop(100%, rgba(0, 0, 0, 0.333)));
+  /* Safari 4+, Chrome 2+ */
+
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.667), rgba(0, 0, 0, 0.333));
+  /* Safari 5.1+, Chrome 10+ */
+
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.667), rgba(0, 0, 0, 0.333));
+  /* Opera 11.10 */
+
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0.667) 0%, rgba(0, 0, 0, 0.333) 100%);
+  /* IE10+ */
+
+  background-image: linear-gradient(left, rgba(0, 0, 0, 0.667), rgba(0, 0, 0, 0.333));
+  /* the standard */
+
+  height: 100%;
+}
+#social-buttons {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0;
+  vertical-align: middle;
+}
+#social-buttons .fb-like {
+  position: relative;
+  top: -4px;
+}
+body {
+  color: #b3b3b3;
+  background-color: #ffffff;
+}
+.textinfo {
+  margin-left: 8.472135955001464rem;
+}
+h2 {
+  position: relative;
+  left: -5px;
+  font-weight: 100;
+  font-size: 4.236067977500615rem;
+  color: #555555;
+  padding: 0.2360679774997437rem 0 0.3819660112500555rem 0;
+  cursor: pointer;
+}
+h3 {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 0.6180339887498547rem;
+  color: #cccccc;
+}
+.textinfo p {
+  font-size: 1rem;
+  line-height: 1.61803398875rem;
+  visibility: hidden;
+}
+#main li {
+  display: block;
+}
+/* #leftmenu li:hover:before {
+	position: absolute;
+	left: 15rem;
+	width: 0;
+	height: 0;
+	border-top: @headerheight / 2 solid transparent;
+	border-left: @headerheight * 2/  3 solid @accent;
+	border-bottom: @headerheight / 2 solid transparent;
+	content:'';
+} */
+#leftmenubg,
+#leftmenu {
+  width: 15rem;
+  position: fixed;
+  z-index: 1;
+}
+#leftmenu .logo {
+  height: 3.618033988750235rem;
+  display: block;
+  padding-right: 2.618033988750235rem;
+  background: transparent url('../img/logofull.png') left top no-repeat;
+}
+#leftmenu .logo:hover {
+  background: transparent url('../img/logofull_hov.png') left top no-repeat;
+}
+#leftmenubg {
+  height: 10000px;
+  box-shadow: -20px -80px 80px 0 rgba(100, 100, 100, 0.1) inset, 0px -17px 17px 0 rgba(100, 100, 100, 0.3);
+  border-right: 2px #e6e6e6 solid;
+  background-color: #ffffff;
+}
+#leftmenu {
+  color: #888888;
+}
+#leftmenu li {
+  border-top: 1px #f5f5f5 solid;
+  height: 2.618033988750235rem;
+  line-height: 2.618033988750235rem;
+  font-size: 1.6180339887500002rem;
+}
+#leftmenu li span {
+  font-size: 1rem;
+  width: 1rem;
+  padding: 0 1rem;
+  display: inline-block;
+}
+#leftmenu li:hover {
+  cursor: pointer;
+  color: #aaddff;
+}
+li.selected {
+  position: relative;
+  color: #aaddff;
+  box-shadow: -2px 0px 8px rgba(100, 100, 100, 0.1);
+  background-color: #ffffff;
+}
+li.selected:after {
+  position: absolute;
+  left: 15rem;
+  width: 0;
+  height: 0;
+  border-top: 1.3090169943751175rem solid transparent;
+  border-left: 1.7453559925001567rem solid #ffffff;
+  border-bottom: 1.3090169943751175rem solid transparent;
+  content: '';
+}
+li.selected:before {
+  position: absolute;
+  left: 15rem;
+  width: 8px;
+  height: 4px;
+  border-top: 1.3090169943751175rem solid transparent;
+  border-left: 1.7453559925001567rem solid #e6e6e6;
+  border-bottom: 1.3090169943751175rem solid transparent;
+  content: '';
+}
+#mainright {
+  position: relative;
+  margin: 0 0 0 15rem;
+}
+#mainright #sortmenu {
+  background-color: #ffffff;
+  box-sizing: border-box;
+  padding-left: 4.236067977500615rem;
+  width: 100%;
+  height: 2.618033988750235rem;
+}
+#mainright #sortmenu p {
+  line-height: 2.618033988750235rem;
+  float: left;
+}
+#mainright #sortmenu status {
+  vertical-align: middle;
+  float: left;
+}
+#mainright #sortmenu {
+  background-color: #ffffff;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.06);
+}
+#mainright li {
+  background-color: #ffffff;
+  box-shadow: 0 40px 40px rgba(100, 100, 100, 0.03) inset, 0 -40px 40px rgba(100, 100, 100, 0.03) inset, 0 3px 5px rgba(0, 0, 0, 0.06);
+  position: relative;
+  height: 6.854101966251465rem;
+  width: 100%;
+  margin: 1rem 0;
+  overflow: hidden;
+  /*		.icobin {
+			position: absolute;
+			left: 1rem + @liheight - .5rem + 2rem * @grs * @grs * @grs;
+			top: @liheight + 2px;
+			width: 100%;
+			height: 32px;
+			img {
+				margin-right: 32px * @grb * @grb;
+				float: left;
+				height: 32px;
+				width: 32px;
+			}
+		}
+*/
+}
+#mainright li img {
+  cursor: pointer;
+  height: 6.354101966251465rem;
+  width: 6.354101966251465rem;
+  padding: 0.25rem;
+  float: left;
+  cursor: pointer;
+}
+#mainright li .status {
+  height: 100%;
+  float: left;
+  display: inline;
+  width: 1rem;
+}
+#mainright li .green {
+  background-color: #aaddff;
+}
+#mainright li .yellow {
+  background-color: #6699bb;
+}
+#mainright li .red {
+  background-color: #225577;
+}
+#mainright li:hover {
+  background-color: #fafaff;
+  height: 11.090169943753075rem;
+}
+#mainright li:hover h2 {
+  color: #447799;
+}
+#mainright li:hover p {
+  visibility: visible;
+}
+canvas {
+  display: block;
+  margin: 4.236067977500615rem auto;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+}
+canvas:hover {
+  cursor: pointer;
+}
+h4 {
+  color: #555555;
+  text-align: center;
+  font-size: 4.236067977500615rem;
+  font-weight: 100;
+}
+a.curr {
+  color: #ff8800;
+}
+.demo-container {
+  margin: 2.618033988750235rem auto;
+  width: 640px;
+}
+.demo-container #canvas {
+  box-shadow: 0px 0px 10px #ccc;
+  margin: 20px 0px;
+}
+.demo-container .rep-heading {
+  font-size: 5em;
+  font-weight: 700;
+}
+.demo-container #errors {
+  color: red;
+  width: 100%;
+  height: 200px;
+}

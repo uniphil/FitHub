@@ -61,7 +61,7 @@ def main():
 @app.route('/training')
 def training():
     exercises = ExerciseType.find()
-    return render_template('training.html', exercises=exercises)
+    return render_template('training.html', exercises=exercises, currtraining='curr')
 
 
 @app.route('/exercise/<slug>')
@@ -69,12 +69,12 @@ def exercise(slug):
     if slug == 'demo':
         return redirect(url_for('demo'))
     ex = ExerciseType.find_one({'slug': slug})
-    return redirect(url_for('main'))
+    return render_template('stats.html')
 
 
 @app.route('/stats')
 def stats():
-    return redirect(url_for('main'))
+    return render_template('stats.html', currstats='curr')
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -88,7 +88,7 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    return redirect(url_for('main'))
+    return render_template('stats.html')
 
     form = LoginForm(request.form)
     if request.method == 'POST' and form.validate():

@@ -1,0 +1,88 @@
+{% extends 'ui.html' %}
+
+{% block content %}
+
+    <div id="main">
+        <section>
+            <div>
+                <canvas id="canvas" width="400" height="400">
+                This text is displayed if your browser does not support HTML5 Canvas.
+                </canvas>
+            </div>
+            
+            <script type="text/javascript">
+            
+                var canvas;
+                var ctx;
+                var lastend;
+                canvas = document.getElementById("canvas");
+                ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                var myColor = ["#ECD078","#D95B43","#C02942","#542437"];
+                var myData = [3, 6, 2, 1];
+                var myTotal;
+                var delta = .9;
+
+                randomizeData = function(){
+                    for(var n = 0; n < myColor.length; n++) {
+                        myColor[n] = '#'+Math.floor(Math.random()*16777215).toString(16); // Thx, Paul Irish
+                        myData[n] = Math.random();
+                    }
+                }
+
+                getTotal = function(){
+                    myTotal = 0;
+                    for (var j = 0; j < myData.length; j++) {
+                        myTotal += (typeof myData[j] == 'number') ? myData[j] : 0;
+                    }
+                    return myTotal;
+                }
+                
+                normalizeData = function(){
+                    for(var k = 0; k < myData.length; k++)
+                        myData[k] = myData[k] / myTotal * 360;
+                }
+                
+                pieDraw = function(e) {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    randomizeData();
+                    var myTotal = getTotal();
+                    normalizeData();
+    
+                    var artist;
+    
+                    function plotData() {
+                        var i = 0;
+                        return function() {
+                            lastend = 0;
+                            for(var x = 0; x < myData.length; x++) {
+                                if(lastend <= i % 360 && i % 360 < lastend + myData[x]){
+                                    ctx.fillStyle = myColor[x];
+                                    ctx.strokeStyle = myColor[x];
+                                }
+                                lastend += myData[x];
+                            }
+                            ctx.beginPath();
+                            ctx.moveTo(200,200);
+                            ctx.arc(200,200,200,i*Math.PI*2/360,(i+delta*3)*Math.PI*2/360,  false);
+                            ctx.lineTo(200,200);
+                            ctx.fill();
+                            i+= delta;
+                            if (i >= 360 - delta*3) {
+                                clearInterval(artist);
+                            }
+                        };
+                    }               
+                    artist = setInterval(plotData(),.1);
+                }
+
+            window.addEventListener('load', pieDraw, false);
+            canvas.addEventListener('click', pieDraw, false);
+            </script>
+        </section>
+        <h4>coming soon.</h4>
+    </div>
+
+{% endblock %}

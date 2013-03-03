@@ -12,7 +12,7 @@
 
 @white: #fff;
 @lightgrey: #c4c4c4;
-@orange: orange;
+@orange: #ff8800;
 @accent: #aaddff;
 @black: #555;
 
@@ -20,7 +20,7 @@
 *::selection      { color: @white;  background: @orange;}
 
 img::-moz-selection { color: @orange;  background: @orange;}
-img::selection      { color: @orange;  background: @orange;}
+img::selection      { color: @orange;  background: @orange;} 
 
 body{
 //	font-size: 62.5%;
@@ -31,21 +31,27 @@ body{
 a {
 	text-decoration: none;
 	color: @black;
+
+	transition: color .5s;
+	-moz-transition: color .5s; /* Firefox 4 */
+	-webkit-transition: color .5s; /* Safari and Chrome */
+	-o-transition: color .5s; /* Opera */
 }
 a:hover {
-	color: #5dcff4;
+	color: @orange;
 }
 li {
-	transition: color .05s, height .3s;
-	-moz-transition: color .05s, height .3s; /* Firefox 4 */
-	-webkit-transition: color .05s, height .3s; /* Safari and Chrome */
-	-o-transition: color .05s, height .3s; /* Opera */
+	transition: color .2s, height .3s;
+	-moz-transition: color .2s, height .3s; /* Firefox 4 */
+	-webkit-transition: color .2s, height .3s; /* Safari and Chrome */
+	-o-transition: color .2s, height .3s; /* Opera */
 }
 
 @logoratio: 68 / 42;
+@logobigratio: 68 / 58;
 
 header {
-	z-index: 2;
+	z-index: 100;
 	box-shadow: 0px 2px 20px rgba(100, 100, 100, .1),
 		0 -24px 20px rgba(100, 100, 100, .05) inset;
 	position: fixed;
@@ -54,34 +60,38 @@ header {
 	width: 100%;
 	background-color: @white;
 	padding-left: 1rem * @grb * @grb;
-	border-bottom: 1px #ddd solid;
+	border-bottom: 2px @lightgrey + #222 solid;
+	font-weight: 800;
 	line-height: @headerheight;
 	font-size: @headerheight * @grs;
 	line-height: @headerheight;
+	text-transform: uppercase;
 	ul {
+		position: relative;
 		height: @headerheight;
-		width: 100%;
-	}
-	li {
-		display: block;
-		float: left;
-		line-height: @headerheight;
-		height: @headerheight;
+		padding-right: 1rem * @grb;
+		li {
+			text-align: right;
+			float: right;
+			display: block;
+			line-height: @headerheight;
+			height: @headerheight;
+		}
 	}
 	a {
 		padding-right: 1rem * @grb * @grb;
 		font-size: 1rem;
-		color: @black;
+		color: @black + #333;
 		line-height: @headerheight;
-		&:not(.logo) {
-			vertical-align: middle;
-		}
+		vertical-align: middle;
+
 	}
 	.logo {
 		padding-right: 1rem * @grb * @grb;
 		height: @headerheight;
 		width: @headerheight * @logoratio;
-		display: inline-block;
+		display: block;
+		float: left;
 		background: transparent url('../img/logo.png') left top no-repeat;
 /*		padding-right: 1rem * @grb * @grb;
 		height: @headerheight;
@@ -93,12 +103,11 @@ header {
 	.logo:hover {
 		background-image: url('../img/logo_hov.png');
 	}
-	.login {
-		position: absolute;
-		right: 1em * @grb;
-	}
-}
 
+}
+.icon {
+	vertical-align: middle;
+}
 #main {
 	padding-top: @headerheight;
 	width: 100%;

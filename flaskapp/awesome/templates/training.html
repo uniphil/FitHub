@@ -5,10 +5,11 @@
     <div id="main">
         <div id="leftmenubg"></div>
         <div id="leftmenu">
+            <a href="/" class='logo'></a>
             <ul>
-                <li><span class='icon-star'></span>Favorites</li>
-                <li><span class='icon-clock'></span>Recent</li>
-                <li><span class='icon-arrow-up'></span>Needs work</li>
+                <li><span class='icon icon-star'></span>Favorites</li>
+                <li><span class='icon icon-clock'></span>Recent</li>
+                <li><span class='icon icon-arrow-up'></span>Needs work</li>
                 <li class='selected'><span></span>Cardio</li>
                 <li><span></span>Shoulders</li>
                 <li><span></span>Upper Arms</li>
@@ -24,18 +25,18 @@
 
         <div id="mainright">
             <div id="sortmenu">
-                <p>Sort by</p>
+                <!-- <p>Sort by</p>
                 <select>
                     <option value="status">Status</option>
                     <option value="alpha">Alphabetical</option>
                     <option value="recent">Most recent</option>
-                </select>
+                </select> -->
             </div>
             <ul>
                 {% for exercise in exercises %}
                     <li class="{{ exercise.tags|join(' ') }}">
                         <div class="status {{ exercise.status_name }}"></div>
-                        <img src="{{ url_for('static', filename=exercise.diagram) }}" alt="This is nothing" />
+                        <img src="{{ url_for('static', filename=exercise.diagram) }}" alt="Icon for {{ exercise.name }}." />
                         <div class="textinfo">
                             <a href="{{ url_for('exercise', slug=exercise.slug) }}"><h2>{{ exercise.name }}</h2></a>
                             <h3>Status: {{ exercise.status_name }}</h3>
