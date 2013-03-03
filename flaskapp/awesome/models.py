@@ -10,7 +10,6 @@
 """
 
 
-from awesome import app
 from awesome.db import Model
 
 
@@ -19,12 +18,23 @@ class ExerciseType(Model):
     _collection_name = 'exercise.types'
 
     def __init__(self, **kwargs):
-        self.name = kwargs.get('name')
-        self.status = kwargs.get('status')
-        self.description = kwargs.get('description')
-        self.diagram = kwargs.get('diagram')
-        self.tags = kwargs.get('tags')
-        
+        if kwargs:
+            self.name = kwargs.get('name')
+            self.status = kwargs.get('status')
+            self.description = kwargs.get('description')
+            self.diagram = kwargs.get('diagram')
+            self.tags = kwargs.get('tags')
+            slugin = kwargs.get('slug', '')
+            if slugin:
+                self.slug = slugin
+            else:
+                self.slug = kwargs.get('name').replace(' ', '-').lower()
+
+    @property
+    def status_name(self):
+        levels = ['Needs improvement', 'On your way', 'Expert']
+        return levels[self.status]
+
 
 class Exercise(Model):
 
@@ -50,5 +60,3 @@ class Message(Model):
 class MailSendLog(Model):
 
     _collection_name = 'mail_post_logs'
-
-

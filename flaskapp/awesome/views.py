@@ -55,6 +55,14 @@ def training():
     return render_template('training.html', exercises=exercises)
 
 
+@app.route('/exercise/<slug>')
+def exercise(slug):
+    if slug == 'demo':
+        return redirect(url_for('demo'))
+    ex = ExerciseType.find_one({'slug': slug})
+    return redirect(url_for('main'))
+
+
 @app.route('/stats')
 def stats():
     return 'stats yo'

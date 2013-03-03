@@ -34,15 +34,11 @@
             <ul>
                 {% for exercise in exercises %}
                     <li class="{{ exercise.tags|join(' ') }}">
-                        <div class="status {{ exercise.status }}"></div>
+                        <div class="status {{ exercise.status_name }}"></div>
                         <img src="{{ url_for('static', filename=exercise.diagram) }}" alt="This is nothing" />
                         <div class="textinfo">
-                            {% if exercise.name == "Jumping Jacks" %}
-                              <a href="{{ url_for('demo') }}"><h2>{{ exercise.name }}</h2></a>
-                            {% else %}
-                              <h2>{{ exercise.name }}</h2>
-                            {% endif %}
-                            <h3>Status: {{ exercise.status }}</h3>
+                            <a href="{{ url_for('exercise', slug=exercise.slug) }}"><h2>{{ exercise.name }}</h2></a>
+                            <h3>Status: {{ exercise.status_name }}</h3>
                             <p>{{ exercise.description }}</p>
                         </div>
                     </li>
