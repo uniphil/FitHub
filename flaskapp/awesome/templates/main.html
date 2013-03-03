@@ -11,7 +11,7 @@
 
                 <form  id="pitch" method="POST" action="{{ url_for('main') }}">
                     {{ form.csrf_token }}
-                    <p>100 000 people do their workouts wrong. Their chances of getting the mumps is infinite. Unless they just fit through the hub. Goddamit.</p>
+                    <p>100 000 people do their workouts wrong. Being injured sucks. Introduing a new solution that gives low cost and personalized training. A personal trainer in your pocket.</p>
                     <p>Want it?</p>
                     <p>My name is {{ form.name(autofocus=true, placeholder=form.name.label.text) }}, and my email address is {{ form.email(required=true, placeholder=form.email.label.text) }}. <button type="submit">Get it first &raquo;</button></p>
                 </form>
@@ -19,9 +19,9 @@
             </div>
 
             <video id="vidibigi" width="100%" height="100%" autoplay="autoplay" loop="loop">
-                <source src="{{ url_for('static', filename='video/fithub_bg.mp4') }}"  type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
-                <source src="{{ url_for('static', filename='video/fithub_bg.webm') }}" type="video/webm; codecs=vp8" />
-                <source src="{{ url_for('static', filename='video/fithub_bg.ogg') }}"  type="video/ogg; codecs=theora,vorbis" />
+                <source src="{{ url_for('static', filename='video/fithub_bg.mp4') }}" />
+                <source src="{{ url_for('static', filename='video/fithub_bg.webm') }}" />
+                <source src="{{ url_for('static', filename='video/fithub_bg.ogg') }}"  />
             </video>
         </div>
     </div>

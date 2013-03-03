@@ -11,29 +11,27 @@
 
 
 from flask import render_template, request, session, redirect, url_for, \
-                  make_response, abort
-from flask.ext.login import login_required, login_user, logout_user, \
-                            current_user
+    make_response
+from flask.ext.login import login_user, logout_user
 import requests
 from awesome import app
 from awesome.forms import LoginForm, SignupForm
-from awesome.users import User, load_user, Interested
-from awesome.models import Message, Exercise, ExerciseType, MailSendLog
+from awesome.users import User, Interested
+from awesome.models import Message, ExerciseType, MailSendLog
 
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
     form = SignupForm(request.form)
-    signed_up = session.get('signed_up', False)
 
     if request.method == 'POST' and form.validate():
         thou = Interested(name=form.email.name, email=form.email.data)
         thou.save()
-        message = render_template('post-signup.html', you=thou)
+        message = render_template('signup-email.html', you=thou)
         data = {
             'to': thou.email,
             'from': 'hello@fithub.mailgun.org',
-            'subject': 'Thanks! --FitHub',
+            'subject': 'FitHub: Your Pocket Personal Trainer',
             'html': message,
         }
         auth = ('api', app.config['MAILGUN_API_KEY'])
@@ -45,7 +43,7 @@ def main():
         log.text = r.text
         log.save()
 
-        form = SignupForm() # reset
+        form = SignupForm()  # reset
         session['signed_up'] = True
 
     return render_template('main.html', form=form)
@@ -65,11 +63,10 @@ def stats():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     return redirect(url_for('main'))
-
     # DO THIS IF TIME (because it's fun to fill out forms when exploring)
-    form = RegistrationForm(request.form)
-    if request.method == 'POST' and form.validate():
-        pass
+    # form = RegistrationForm(request.form)
+    # if request.method == 'POST' and form.validate():
+    #     pass
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -99,7 +96,7 @@ def clear_session():
 
 @app.route('/messages/', methods=['POST'])
 def recieve_message():
-     if request.method == 'POST':
+    if request.method == 'POST':
         message = Message(
             sender=request.form.get('recipient'),
             subject=request.form.get('subject', ''),
@@ -109,9 +106,12 @@ def recieve_message():
         message.save()
         return make_response('cool cool', 200)
 
+
 @app.route('/demo')
 def demo():
-  return render_template('demo.html', live=request.args.get('live', 'false') == 'true')
+    return render_template('demo.html',
+                           live=request.args.get('live', 'false') == 'true')
+
 
 @app.errorhandler(404)
 def page_not_found(error):
