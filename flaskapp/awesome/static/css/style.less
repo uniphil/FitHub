@@ -5,72 +5,99 @@
 }
 
 @grb: 1.61803398875rem;
-@grs: 1/@grb;
+@grs: 1 / @grb;
 
 @headerheight: 1rem * @grb * @grb;
 @footerheight: 1rem * @grb;
 
 @white: #fff;
 @lightgrey: #c4c4c4;
-@selectionred: #ffcccc;
-@black: #000;
+@orange: orange;
+@accent: #aaddff;
+@black: #555;
+
+*::-moz-selection { color: @white;  background: @orange;}
+*::selection      { color: @white;  background: @orange;}
+
+img::-moz-selection { color: @orange;  background: @orange;}
+img::selection      { color: @orange;  background: @orange;} 
 
 body{
-	font-size: 62.5%;
+//	font-size: 62.5%;
+	font-weight: 400;
 	font-family: 'Raleway', 'Helvetica Neue', 'Helvetica', 'Ariel', sans-serif;
 	background-color: @lightgrey;
 }
-a, li {
-	vertical-align: middle;
-}
-a, a:visited {
+a {
 	text-decoration: none;
 	color: @black;
 }
 a:hover {
 	color: #5dcff4;
 }
+li {
+	transition: color .05s, height .3s;
+	-moz-transition: color .05s, height .3s; /* Firefox 4 */
+	-webkit-transition: color .05s, height .3s; /* Safari and Chrome */
+	-o-transition: color .05s, height .3s; /* Opera */
+}
+
+@logoratio: 68 / 42;
+
 header {
 	z-index: 2;
-	box-shadow: 0px 2px 20px rgba(100, 100, 100, .1);
+	box-shadow: 0px 2px 20px rgba(100, 100, 100, .1),
+		0 -24px 20px rgba(100, 100, 100, .05) inset;
 	position: fixed;
 	top: 0;
 	height: @headerheight;
 	width: 100%;
 	background-color: @white;
 	padding-left: 1rem * @grb * @grb;
-	border-bottom: 1px #aaaaaa solid;
+	border-bottom: 1px #ddd solid;
 	line-height: @headerheight;
 	font-size: @headerheight * @grs;
 	line-height: @headerheight;
-	li {
-		display: inline;
+	ul {
+		height: @headerheight;
+		width: 100%;
 	}
-	a, a:visited {
+	li {
+		display: block;
+		float: left;
+		line-height: @headerheight;
+		height: @headerheight;
+	}
+	a {
 		padding-right: 1rem * @grb * @grb;
 		font-size: 1rem;
 		color: @black;
+		line-height: @headerheight;
+		&:not(.logo) {
+			vertical-align: middle;
+		}
 	}
 	.logo {
 		padding-right: 1rem * @grb * @grb;
+		height: @headerheight;
+		width: @headerheight * @logoratio;
+		display: inline-block;
+		background: transparent url('../img/logo.png') left top no-repeat;
+/*		padding-right: 1rem * @grb * @grb;
 		height: @headerheight;
 		width: @logoheight * @logoratio;
 		display: inline-block;
 		background: transparent url('../img/logo.png') left center no-repeat;
 		background-size: @logoheight*@logoratio @logoheight;
-	}
+*/	}
 	.logo:hover {
 		background-image: url('../img/logo_hov.png');
 	}
-	// why isn't this working?
 	.login {
-		position: fixed;
-		right: 0;
+		position: absolute;
+		right: 1em * @grb;
 	}
 }
-
-@logoheight: @headerheight * @grs;
-@logoratio: 278/86;
 
 #main {
 	padding-top: @headerheight;

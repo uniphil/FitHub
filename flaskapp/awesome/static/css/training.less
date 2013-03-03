@@ -1,35 +1,51 @@
 @import "style";
 @import "main";
 
+@liheight: 1rem * @grb * @grb * @grb * @grb;
+
 body {
-	color: @lightgrey;
+	color: @lightgrey - #111;
 	background-color: @white;
 }
-
+.textinfo {
+	margin-left: 1rem * @grb + @liheight;
+}
 h2 {
-	font-size: 1rem * @grb;
-	font-weight: 800;
-	text-transform: uppercase;
+	position: relative;
+	left: -5px;
+	font-weight: 100;
+	font-size: 1rem * @grb * @grb * @grb;
+    color: @black;
+    // color: @lightgrey + #111;
+    padding: 1rem * @grs * @grs 0;
+    cursor: pointer;
 }
 h3 {
+	cursor: pointer;
 	font-size: 1rem;
 	font-weight: 800;
 	text-transform: uppercase;
 	margin-bottom: 1rem * @grs;
+	color: @lightgrey + #111;
 }
 p {
 	font-size: 1rem;
-	line-height: 1rem;
+	line-height: 1rem * @grb;
+	visibility: hidden;
 }
 #main li {
 	display: block;
-	&:hover {
-		background-color: @selectionred;
-		color: @white;
-		cursor: pointer;
-		
-	}
 }
+/* #leftmenu li:hover:before {
+	position: absolute;
+	left: 15rem;
+	width: 0;
+	height: 0;
+	border-top: @headerheight / 2 solid transparent;
+	border-left: @headerheight * 2/  3 solid @accent;
+	border-bottom: @headerheight / 2 solid transparent;
+	content:'';
+} */
 #leftmenubg, #leftmenu {
 	width: 15rem;
 	position: fixed;
@@ -38,9 +54,10 @@ p {
 #leftmenubg {
 	height: 10000px;
 	box-shadow: -20px -80px 80px 0 rgba(100, 100, 100, .1) inset,
-		0px -80px 80px 0 rgba(0, 0, 0, .7);
+		0px -17px 17px 0 rgba(100, 100, 100, .3);
 }
 #leftmenu {
+	color: @lightgrey;
 	position: fixed;
 	left: 0;
 	top: @headerheight;
@@ -54,19 +71,24 @@ p {
 			padding: 0 1rem;
 			display: inline-block;
 		}
+		&:hover {
+			cursor: pointer;
+			color: @accent;
+		}
 	}
 }
 li.selected {
 	position: relative;
-	color: @white;
-	background-color: @selectionred;
+	color: @accent;
+	box-shadow: -2px 0px 8px rgba(100, 100, 100, .1);
+	background-color: @white;
 	&:before {
 		position: absolute;
 		left: 15rem;
 		width: 0;
 		height: 0;
 		border-top: @headerheight / 2 solid transparent;
-		border-left: @headerheight * 2/  3 solid @selectionred;
+		border-left: @headerheight * 2/  3 solid @white;
 		border-bottom: @headerheight / 2 solid transparent;
 		content:'';
 	}
@@ -75,10 +97,10 @@ li.selected {
 	position: relative;
 	margin: 0 0 0 15rem;
 	#sortmenu {
+		background-color: @white;
+		box-sizing: border-box;
 		padding-left: 1rem * @grb * @grb * @grb;
 		width: 100%;
-		border-left: 1px @lightgrey solid;
-		border-bottom: 1px @lightgrey solid;
 		height: @headerheight;
 		p {
 			line-height: @headerheight;
@@ -89,19 +111,42 @@ li.selected {
 			float: left;
 		}
 	}
+	#sortmenu {	
+		background-color: @white;
+	    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.06);
+	}
 	li {
-		@liheight: 1rem * @grb * @grb * @grb * @grb;
-		// .border-radius (1rem 0 0 1rem);
+		background-color: @white;
+		box-shadow: 0 40px 40px rgba(100, 100, 100, .03) inset,
+			0 -40px 40px rgba(100, 100, 100, .03) inset,
+			0 3px 5px rgba(0, 0, 0, 0.06);
+		position: relative;
 		height: @liheight;
 		width: 100%;
-		margin: 1rem * @grs * @grs * @grs 0;
+		margin: 1rem 0;
+		overflow: hidden;
 		img {
+			cursor: pointer;
 			height: @liheight - .5rem;
 			width: @liheight - .5rem;
-			padding: (@liheight - @liheight + .5rem) / 2;
+			padding: .5rem / 2;
 			float: left;
+			cursor: pointer;
 		}
-		.status {
+/*		.icobin {
+			position: absolute;
+			left: 1rem + @liheight - .5rem + 2rem * @grs * @grs * @grs;
+			top: @liheight + 2px;
+			width: 100%;
+			height: 32px;
+			img {
+				margin-right: 32px * @grb * @grb;
+				float: left;
+				height: 32px;
+				width: 32px;
+			}
+		}
+*/		.status {
 			height: 100%;
 			float: left;
 			display: inline;
@@ -109,13 +154,23 @@ li.selected {
 			// .border-radius (1rem 0 0 1rem);
 		}
 		.green {
-			background-color: green;
+			background-color: @accent;
 		}
 		.yellow {
-			background-color: yellow;
+			background-color: @accent - #444;
 		}
 		.red {
-			background-color: red;
+			background-color: @accent - #888;
+		}
+		&:hover {
+			background-color: #fafaff;
+			height: @liheight * @grb;
+			h2 {
+				color: @accent - #666;
+			}
+			p {
+				visibility: visible;
+			}
 		}
 	}
 }

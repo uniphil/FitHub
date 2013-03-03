@@ -53,7 +53,7 @@ def main():
 
 @app.route('/training')
 def training():
-    return "training yo"
+    return render_template('training.html')
 
 
 @app.route('/stats')
