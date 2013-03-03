@@ -2,8 +2,9 @@ var average = function(arr) {
   return _.reduce(arr, function (sum, x) { return sum + x }, 0) / arr.length;
 };
 
-var WINDOW_SIZE = 9;
+var WINDOW_SIZE = 15;
 var SYMETRICAL_THRESHOLD = 50;
+var UP_THRESHOLD = 130;
 
 var Exercise = function (skeleton) {
 	this.skeleton = skeleton;
@@ -77,13 +78,13 @@ Exercise.prototype.getPrevAngleChange = function () {
 Exercise.prototype.hasFinishedRep = function () {
   if (this.state == "up") {
     if (this.getPrevAngleChange().left > 0 && this.getCurrentAngleChange().left < 0) {
-      if (this.getPrevAngle().left > 160 && this.getCurrentAngle().left > 160) {
+      if (this.getPrevAngle().left > UP_THRESHOLD && this.getCurrentAngle().left > UP_THRESHOLD) {
         this.state = "down";
       }
     }
   } else {
     if (this.getPrevAngleChange().left < 0 && this.getCurrentAngleChange().left > 0) {
-      if (this.getPrevAngle().left < 160 && this.getCurrentAngle().left < 160) {
+      if (this.getPrevAngle().left < UP_THRESHOLD && this.getCurrentAngle().left < UP_THRESHOLD) {
         this.state = "up";
         return true;
       }
@@ -130,12 +131,12 @@ Exercise.prototype.updateRepetitions = function (jsonObject) {
     this.addError("Arms were not symetrical");
   }
 
-	if (this.hasFinishedRep() && this.repErrors.length == 0) {
+	if (this.hasFinishedRep() && this.repErrors.length != 0) {
 		$("#repetitions").text(++this.repetitions);
 	}
 
   $('#info').html('')
-    .append('Range : ' + this.getRange()).append($('<br>'))
+    .append('Range : ' + this.getRange() + " state : " + this.state).append($('<br>'))
     .append('Left : ' + this.getCurrentAngle().left).append($('<br>'))
     .append('Right : ' + this.getCurrentAngle().right).append($('<br>'))
 

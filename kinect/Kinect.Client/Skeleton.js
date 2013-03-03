@@ -96,6 +96,9 @@ Skeleton.prototype.jointAngle = function(data, beforeJoint, middleJoint, afterJo
     return angle;
   };
 
+  var isCounterClockwise = function(v1, v2) {
+  };
+
   var joint = data.skeletons[0].joints;
 
   return getAngle(joint[beforeJoint], joint[middleJoint], joint[afterJoint]);
