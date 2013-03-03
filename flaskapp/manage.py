@@ -32,27 +32,32 @@ def mongoinit():
     from flask.ext.pymongo import pymongo
     from awesome.db import mongo
     from awesome.users import User
-    collection_indices = {
-        'user': {
-            'args': ('username',),
-            'kwargs': {'unique': True, 'drop_dups': True},
-        },
-    }
-    print 'creating indices...'
-    for collection, index in collection_indices.items():
-        print collection
-        mongo.db[collection].create_index(*index['args'], **index['kwargs'])
+    # collection_indices = {
+    #     'user': {
+    #         'args': ('username',),
+    #         'kwargs': {'unique': True, 'drop_dups': True},
+    #     },
+    # }
+    # print 'creating indices...'
+    # for collection, index in collection_indices.items():
+    #     print collection
+    #     mongo.db[collection].create_index(*index['args'], **index['kwargs'])
 
-    print 'creating admin account...'
-    admin = User('admin', 'password', name='Administrator', access='admin')
-    try:
-        admin.save()
-    except pymongo.errors.DuplicateKeyError:
-        print 'admin account exists.'
-        if raw_input('reset? ').lower() in ['y', 'yes', 't', 'true']:
-            User.collection.remove({'username': admin.username})
-            admin.save()
-            print 'admin account reset'
+    # print 'creating admin account...'
+    # admin = User(username='admin', passwod='password',
+    #              name='Administrator', access='admin')
+    # try:
+    #     admin.save()
+    # except pymongo.errors.DuplicateKeyError:
+    #     print 'admin account exists.'
+    #     if raw_input('reset? ').lower() in ['y', 'yes', 't', 'true']:
+    #         User.collection.remove({'username': admin.username})
+    #         admin.save()
+    #         print 'admin account reset'
+
+    from awesome.fixtures import create_all
+    create_all()
+
 
 @manager.command
 def activate(env='venv'):
